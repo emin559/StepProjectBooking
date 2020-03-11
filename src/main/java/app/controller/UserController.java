@@ -1,6 +1,6 @@
-package contoller;
+package app.controller;
 
-import service.UserService;
+import app.service.UserService;
 
 public class UserController {
     UserService userService;

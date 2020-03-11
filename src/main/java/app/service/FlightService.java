@@ -1,6 +1,6 @@
-package service;
+package app.service;
 
-import dao.FlightDao;
+import app.dao.FlightDao;
 
 public class FlightService {
     FlightDao flightDao;

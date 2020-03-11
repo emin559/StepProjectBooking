@@ -1,7 +1,6 @@
-package dao;
+package app.dao;
 
 import app.entities.Booking;
-import app.entities.Flight;
 
 import java.util.ArrayList;
 import java.util.List;

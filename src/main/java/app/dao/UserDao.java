@@ -1,6 +1,5 @@
-package dao;
+package app.dao;
 
-import app.entities.Flight;
 import app.entities.User;
 
 import java.util.ArrayList;

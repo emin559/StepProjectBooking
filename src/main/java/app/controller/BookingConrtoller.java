@@ -1,6 +1,6 @@
-package contoller;
+package app.controller;
 
-import service.BookingService;
+import app.service.BookingService;
 
 public class BookingConrtoller {
     BookingService bookingService;

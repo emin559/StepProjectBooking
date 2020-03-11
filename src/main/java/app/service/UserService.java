@@ -1,6 +1,6 @@
-package service;
+package app.service;
 
-import dao.UserDao;
+import app.dao.UserDao;
 
 public class UserService {
     UserDao userDao;

@@ -1,6 +1,6 @@
-package contoller;
+package app.controller;
 
-import service.FlightService;
+import app.service.FlightService;
 
 public class FlightConroller {
     FlightService flightService;

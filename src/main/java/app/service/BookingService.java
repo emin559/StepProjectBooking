@@ -1,6 +1,6 @@
-package service;
+package app.service;
 
-import dao.BookingDao;
+import app.dao.BookingDao;
 
 public class BookingService {
     BookingDao bookingDao;
