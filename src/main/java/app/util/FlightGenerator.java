@@ -19,7 +19,6 @@ public class FlightGenerator {
 
   public static ArrayList<Flight> generateFlight(int count) {
     ArrayList<Flight> generatedFlight = new ArrayList<>();
-    StringBuilder flight = new StringBuilder();
     Random rndm = new Random();
     ArrayList<Airport> randomDestinations = new ArrayList<>();
     EnumSet.allOf(Airport.class).forEach(air -> randomDestinations.add(air));
@@ -41,8 +40,6 @@ public class FlightGenerator {
       String formattedFlightDate = flightDate.format(dateTimeFormatter);
 
       generatedFlight.add(new Flight(i+1, randomDest, formattedFlightDate, seats, 0));
-
-      generatedFlight.forEach(fl -> flight.append(fl));
     }
     return generatedFlight;
   }

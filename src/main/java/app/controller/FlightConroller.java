@@ -35,7 +35,7 @@ public class FlightConroller {
 
     public static void main(String[] args) {
         FlightService flightService1 = new FlightService();
-        flightService1.generateFlight("eee.txt");
+        flightService1.generateFlight();
     }
 
 }

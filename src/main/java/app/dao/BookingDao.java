@@ -7,7 +7,8 @@ import java.util.List;
 import java.util.Optional;
 
 public class BookingDao implements DAO<Booking> {
-  List<Booking> bookings = new ArrayList<>();
+  public List<Booking> bookings = new ArrayList<>();
+
 
   @Override
   public void create() {

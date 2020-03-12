@@ -40,11 +40,6 @@ public class User {
 
   @Override
   public String toString() {
-    return "User{" +
-            "ID=" + ID +
-            ", username='" + username + '\'' +
-            ", password='" + password + '\'' +
-            ", flights=" + flights +
-            '}';
+    return String.format("%d %s %s", getID(), getUsername(), getPassword());
   }
 }

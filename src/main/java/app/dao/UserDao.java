@@ -1,18 +1,49 @@
 package app.dao;
 
+import app.entities.Flight;
 import app.entities.User;
+import app.util.FlightGenerator;
 
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class UserDao implements DAO<User> {
   public List<User> users = new ArrayList<>();
 
 
+
   @Override
   public void create() {
+    File file = new File("src/main/java/app/database/user.txt");
 
+    try {
+      new BufferedReader(new FileReader(file)).lines().collect(Collectors.toList());
+      BufferedWriter bw = new BufferedWriter(new FileWriter(file, true));
+      for(User user: users) {
+        bw.write(user.toString());
+        bw.write("\n");
+      }
+      bw.close();
+
+
+    } catch (Exception e) {
+      System.out.printf(" %s File not found! \n", file);
+
+      try {
+        BufferedWriter bw = new BufferedWriter(new FileWriter(file));
+        for(User user: users) {
+          bw.write(user.toString());
+          bw.write("\n");
+        }
+        bw.close();
+
+      } catch (Exception e2) {
+        System.out.println("Something went wrong!");
+      }
+    }
   }
 
   @Override

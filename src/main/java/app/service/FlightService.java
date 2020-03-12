@@ -36,8 +36,8 @@ public class FlightService {
     return flightDao.update(entity);
   }
 
-  public void generateFlight(String filename) {
-    File file = new File(filename);
+  public void generateFlight() {
+    File file = new File("src/main/java/app/database/flight.txt");
 
     try {
       List<String> lines = new BufferedReader(new FileReader(file)).lines().collect(Collectors.toList());
@@ -49,14 +49,12 @@ public class FlightService {
           bw.write("\n");
         }
         bw.close();
-
       }
-
 
     } catch (Exception e) {
       System.out.printf(" %s File not found! \n", file);
 
-      try{
+      try {
         BufferedWriter bw = new BufferedWriter(new FileWriter(file));
         flightDao.flights.addAll(FlightGenerator.generateFlight(15));
         for (Flight flight : flightDao.flights) {
@@ -65,9 +63,7 @@ public class FlightService {
         }
         bw.close();
 
-      }
-      catch(Exception e2)
-      {
+      } catch (Exception e2) {
         System.out.println("Something went wrong!");
       }
     }
