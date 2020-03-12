@@ -1,27 +1,27 @@
 package app.entities;
 
+import app.enums.Airport;
+
 public class Flight {
   private int ID;
-  private String destination;
+  private Airport destination;
   private String date;
   private int seatCount;
   private int reservedSeats;
-  private User user;
 
-  public Flight(int ID, String destination, String date, int seatCount, int reservedSeats, User user) {
+  public Flight(int ID, Airport destination, String date, int seatCount, int reservedSeats) {
     this.ID = ID;
     this.destination = destination;
     this.date = date;
     this.seatCount = seatCount;
     this.reservedSeats = reservedSeats;
-    this.user = user;
   }
 
   public int getID() {
     return ID;
   }
 
-  public String getDestination() {
+  public Airport getDestination() {
     return destination;
   }
 
@@ -37,7 +37,13 @@ public class Flight {
     return reservedSeats;
   }
 
-  public User getUser() {
-    return user;
+  @Override
+  public String toString() {
+    return
+            "Flight ID: " + ID + " | " +
+            "FROM: KYIV (KBP) TO: " + destination + " | " +
+             date + " | " +
+             seatCount + " | " +
+             reservedSeats + "\n";
   }
 }

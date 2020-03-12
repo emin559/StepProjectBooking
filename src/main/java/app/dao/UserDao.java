@@ -7,7 +7,8 @@ import java.util.List;
 import java.util.Optional;
 
 public class UserDao implements DAO<User> {
-  List<User> users = new ArrayList<>();
+  public List<User> users = new ArrayList<>();
+
 
   @Override
   public void create() {

@@ -1,9 +1,12 @@
 package app.entities;
 
+import java.util.List;
+
 public class Booking {
   private int ID;
   private User user;
   private Flight flight;
+  private List<Person> persons;
 
   public Booking(int ID, User user, Flight flight) {
     this.ID = ID;
@@ -21,5 +24,9 @@ public class Booking {
 
   public Flight getFlight() {
     return flight;
+  }
+
+  public List<Person> getPersons() {
+    return persons;
   }
 }

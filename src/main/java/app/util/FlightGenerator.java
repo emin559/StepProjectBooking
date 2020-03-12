@@ -1,5 +1,9 @@
 package app.util;
 
+import app.dao.FlightDao;
+import app.dao.UserDao;
+import app.entities.Flight;
+import app.entities.User;
 import app.enums.Airport;
 
 import javax.print.attribute.standard.Destination;
@@ -13,11 +17,12 @@ public class FlightGenerator {
 
 
   public static String generateFlight(int count) {
+    FlightDao flghtdao = new FlightDao();
+    UserDao userdao = new UserDao();
     StringBuilder flight = new StringBuilder();
     Random rndm = new Random();
     ArrayList<Airport> randomDestinations = new ArrayList<>();
     EnumSet.allOf(Airport.class).forEach(air -> randomDestinations.add(air));
-
 
     int seats = 5;
 
@@ -26,20 +31,18 @@ public class FlightGenerator {
       int randomDate = rndm.nextInt(15);
       Airport randomDest = randomDestinations.get(randomDestIndex);
 
-      DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+      DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm");
       LocalDateTime localDateTime = LocalDateTime.now();
-      LocalDateTime futureLocalDateTime = localDateTime
+      LocalDateTime flightDate = localDateTime
               .plusDays(randomDate)
               .plusHours(randomDate)
               .plusMinutes(randomDate);
 
-      String formattedLocalDateTime = futureLocalDateTime.format(dateTimeFormatter);
+      String formattedFlightDate = flightDate.format(dateTimeFormatter);
 
-      flight
-              .append("FROM: KYIV TO: ")
-              .append(randomDest).append(" | ")
-              .append(formattedLocalDateTime).append(" | ")
-              .append(seats).append("\n");
+      flghtdao.flights.add(new Flight(i+1, randomDest, formattedFlightDate, seats, 0));
+
+      flghtdao.flights.forEach(fl -> flight.append(fl));
     }
     return flight.toString();
   }
@@ -47,5 +50,4 @@ public class FlightGenerator {
   public static void main(String[] args) {
     System.out.println(generateFlight(15));
   }
-
 }

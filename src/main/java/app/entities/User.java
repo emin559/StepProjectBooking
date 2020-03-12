@@ -8,6 +8,13 @@ public class User {
   private String password;
   private List<Flight> flights;
 
+
+  public User(int ID, String username, String password) {
+    this.ID = ID;
+    this.username = username;
+    this.password = password;
+  }
+
   public User(int ID, String username, String password, List<Flight> flights) {
     this.ID = ID;
     this.username = username;
@@ -29,5 +36,15 @@ public class User {
 
   public List<Flight> getFlights() {
     return flights;
+  }
+
+  @Override
+  public String toString() {
+    return "User{" +
+            "ID=" + ID +
+            ", username='" + username + '\'' +
+            ", password='" + password + '\'' +
+            ", flights=" + flights +
+            '}';
   }
 }
