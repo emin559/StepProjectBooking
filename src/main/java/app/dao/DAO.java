@@ -4,15 +4,15 @@ import java.util.List;
 import java.util.Optional;
 
 public interface DAO<T> {
-    void create();
+  void create();
 
-    List<T> getAll();
+  List<T> getAll();
 
-    Optional<T> getByID(int ID);
+  Optional<T> getByID(int ID);
 
-    boolean delete(int ID);
+  boolean delete(int ID);
 
-    boolean save(T entity);
+  boolean save(T entity);
 
-    boolean update(T entity);
+  boolean update(T entity);
 }

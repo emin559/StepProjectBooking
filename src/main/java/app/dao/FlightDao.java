@@ -7,37 +7,37 @@ import java.util.List;
 import java.util.Optional;
 
 public class FlightDao implements DAO<Flight> {
-    List<Flight> flights=new ArrayList<>();
+  List<Flight> flights = new ArrayList<>();
 
-    @Override
-    public void create() {
+  @Override
+  public void create() {
 
-    }
+  }
 
-    @Override
-    public List<Flight> getAll() {
-        return flights;
-    }
+  @Override
+  public List<Flight> getAll() {
+    return flights;
+  }
 
-    @Override
-    public Optional<Flight> getByID(int ID) {
-        return flights.stream().filter(flight -> ID==flight.getID()).findFirst();
-    }
+  @Override
+  public Optional<Flight> getByID(int ID) {
+    return flights.stream().filter(flight -> ID == flight.getID()).findFirst();
+  }
 
-    @Override
-    public boolean delete(int ID) {
-        if (ID>flights.size() || ID < 0) return false;
-        flights.removeIf(flight -> ID ==flight.getID());
-        return true;
-    }
+  @Override
+  public boolean delete(int ID) {
+    if (ID > flights.size() || ID < 0) return false;
+    flights.removeIf(flight -> ID == flight.getID());
+    return true;
+  }
 
-    @Override
-    public boolean save(Flight entity) {
-        return false;
-    }
+  @Override
+  public boolean save(Flight entity) {
+    return false;
+  }
 
-    @Override
-    public boolean update(Flight entity) {
-        return false;
-    }
+  @Override
+  public boolean update(Flight entity) {
+    return false;
+  }
 }
