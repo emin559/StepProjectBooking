@@ -7,6 +7,7 @@ import app.entities.User;
 import app.enums.Airport;
 
 import javax.print.attribute.standard.Destination;
+import java.lang.reflect.Array;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -16,9 +17,8 @@ import java.util.Random;
 public class FlightGenerator {
 
 
-  public static String generateFlight(int count) {
-    FlightDao flghtdao = new FlightDao();
-    UserDao userdao = new UserDao();
+  public static ArrayList<Flight> generateFlight(int count) {
+    ArrayList<Flight> generatedFlight = new ArrayList<>();
     StringBuilder flight = new StringBuilder();
     Random rndm = new Random();
     ArrayList<Airport> randomDestinations = new ArrayList<>();
@@ -40,11 +40,11 @@ public class FlightGenerator {
 
       String formattedFlightDate = flightDate.format(dateTimeFormatter);
 
-      flghtdao.flights.add(new Flight(i+1, randomDest, formattedFlightDate, seats, 0));
+      generatedFlight.add(new Flight(i+1, randomDest, formattedFlightDate, seats, 0));
 
-      flghtdao.flights.forEach(fl -> flight.append(fl));
+      generatedFlight.forEach(fl -> flight.append(fl));
     }
-    return flight.toString();
+    return generatedFlight;
   }
 
   public static void main(String[] args) {

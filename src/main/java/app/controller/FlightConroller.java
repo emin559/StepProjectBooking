@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 public class FlightConroller {
-    FlightService flightService;
+    public FlightService flightService = new FlightService();
 
     public void create() {
         flightService.create();
@@ -32,4 +32,10 @@ public class FlightConroller {
     public boolean update(Flight entity) {
         return flightService.update(entity);
     }
+
+    public static void main(String[] args) {
+        FlightService flightService1 = new FlightService();
+        flightService1.generateFlight("eee.txt");
+    }
+
 }
