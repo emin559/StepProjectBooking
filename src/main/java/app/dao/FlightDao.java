@@ -7,6 +7,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -58,6 +59,12 @@ public class FlightDao implements DAO<Flight> {
       List<String> lines = new BufferedReader(new FileReader(file)).lines().collect(Collectors.toList());
       for (String line : lines) {
         String[] split1 = line.split(" ");
+
+        Date date = new Date(split1[2].timeSTamp);
+        DateFormat formatter = new SimpleDateFormat("HH:mm:ss.SSS");
+        formatter.setTimeZone(TimeZone.getTimeZone("UTC"));
+        String dateFormatted = formatter.format(date);
+
         flightList.add(new Flight(Integer.parseInt(split1[0].trim()), split1[1].trim(), split1[2].trim(), Integer.parseInt(split1[3].trim()), Integer.parseInt(split1[4].trim())));
       }
 

@@ -1,6 +1,7 @@
 package app.controller;
 
 import app.entities.Flight;
+import app.enums.Airport;
 import app.service.FlightService;
 
 import java.util.List;
@@ -37,7 +38,9 @@ public class FlightConroller {
         FlightService flightService1 = new FlightService();
         flightService1.generateFlight();
         flightService1.fillList();
-        System.out.println(flightService1.getAll());
+        flightService1.getAll().forEach(fl -> fl.toString());
+        System.out.println(flightService1.search(Airport.GANJA, "21/03/2020", 3));
+
     }
 
 }

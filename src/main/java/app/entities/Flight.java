@@ -2,17 +2,29 @@ package app.entities;
 
 import app.enums.Airport;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class Flight {
   private int ID;
   private Airport destination;
-  private String date;
+  private long date;
   private int seatCount;
   private int reservedSeats;
 
   public Flight(int ID, String destination, String date, int seatCount, int reservedSeats) {
     this.ID = ID;
     this.destination = Airport.valueOf(destination);
-    this.date = date;
+    DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+    try{
+      Date date1 = format.parse(date);
+      this.date = date1.getTime();
+
+    }
+    catch (Exception e) {
+      System.out.println("Error");
+    }
     this.seatCount = seatCount;
     this.reservedSeats = reservedSeats;
   }
@@ -25,7 +37,7 @@ public class Flight {
     return destination;
   }
 
-  public String getDate() {
+  public long getDate() {
     return date;
   }
 
