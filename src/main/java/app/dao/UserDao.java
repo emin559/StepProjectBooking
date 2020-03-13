@@ -14,7 +14,6 @@ public class UserDao implements DAO<User> {
   public List<User> users = new ArrayList<>();
 
 
-
   @Override
   public void create() {
     File file = new File("src/main/java/app/database/user.txt");
@@ -22,7 +21,7 @@ public class UserDao implements DAO<User> {
     try {
       new BufferedReader(new FileReader(file)).lines().collect(Collectors.toList());
       BufferedWriter bw = new BufferedWriter(new FileWriter(file, true));
-      for(User user: users) {
+      for (User user : users) {
         bw.write(user.toString());
         bw.write("\n");
       }
@@ -34,7 +33,7 @@ public class UserDao implements DAO<User> {
 
       try {
         BufferedWriter bw = new BufferedWriter(new FileWriter(file));
-        for(User user: users) {
+        for (User user : users) {
           bw.write(user.toString());
           bw.write("\n");
         }
@@ -72,4 +71,24 @@ public class UserDao implements DAO<User> {
   public boolean update(User entity) {
     return false;
   }
+
+  public void fillList() {
+    File file = new File("src/main/java/app/database/user.txt");
+    List<User> userList = new ArrayList<>();
+
+    try {
+      List<String> lines = new BufferedReader(new FileReader(file)).lines().collect(Collectors.toList());
+      for (String line : lines) {
+        String[] split1 = line.split(" ");
+        userList.add(new User(Integer.parseInt(split1[0].trim()),split1[1].trim(),split1[2].trim()));
+      }
+
+    } catch (Exception e) {
+      System.out.printf(" %s File not found! \n", file);
+
+
+    }
+    users.addAll(userList);
+  }
 }
+

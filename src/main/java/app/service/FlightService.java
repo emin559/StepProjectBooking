@@ -69,8 +69,9 @@ public class FlightService {
     }
   }
 
-  public static void main(String[] args) {
-
+  public void fillList(){
+    flightDao.fillList();
   }
+
 
 }

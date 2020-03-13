@@ -9,9 +9,9 @@ public class Flight {
   private int seatCount;
   private int reservedSeats;
 
-  public Flight(int ID, Airport destination, String date, int seatCount, int reservedSeats) {
+  public Flight(int ID, String destination, String date, int seatCount, int reservedSeats) {
     this.ID = ID;
-    this.destination = destination;
+    this.destination = Airport.valueOf(destination);
     this.date = date;
     this.seatCount = seatCount;
     this.reservedSeats = reservedSeats;
@@ -40,10 +40,6 @@ public class Flight {
   @Override
   public String toString() {
     return
-            "Flight ID: " + ID + " | " +
-            "FROM: KYIV (KBP) TO: " + destination + " | " +
-             date + " | " +
-             seatCount + " | " +
-             reservedSeats + "\n";
+            String.format("%d %s %s %d %d", ID, destination, date, seatCount, reservedSeats);
   }
 }

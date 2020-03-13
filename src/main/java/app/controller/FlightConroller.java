@@ -36,6 +36,8 @@ public class FlightConroller {
     public static void main(String[] args) {
         FlightService flightService1 = new FlightService();
         flightService1.generateFlight();
+        flightService1.fillList();
+        System.out.println(flightService1.getAll());
     }
 
 }

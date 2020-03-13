@@ -6,7 +6,7 @@ public class User {
   private int ID;
   private String username;
   private String password;
-  private List<Flight> flights;
+  private List<Booking> bookings;
 
 
   public User(int ID, String username, String password) {
@@ -15,11 +15,11 @@ public class User {
     this.password = password;
   }
 
-  public User(int ID, String username, String password, List<Flight> flights) {
+  public User(int ID, String username, String password, List<Booking> flights) {
     this.ID = ID;
     this.username = username;
     this.password = password;
-    this.flights = flights;
+    this.bookings = flights;
   }
 
   public int getID() {
@@ -34,8 +34,8 @@ public class User {
     return password;
   }
 
-  public List<Flight> getFlights() {
-    return flights;
+  public List<Booking> getBookings() {
+    return bookings;
   }
 
   @Override

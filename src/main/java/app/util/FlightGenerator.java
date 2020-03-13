@@ -1,13 +1,6 @@
 package app.util;
-
-import app.dao.FlightDao;
-import app.dao.UserDao;
 import app.entities.Flight;
-import app.entities.User;
 import app.enums.Airport;
-
-import javax.print.attribute.standard.Destination;
-import java.lang.reflect.Array;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -28,9 +21,9 @@ public class FlightGenerator {
     for (int i = 0; i < count; i++) {
       int randomDestIndex = rndm.nextInt(randomDestinations.size() - 1);
       int randomDate = rndm.nextInt(15);
-      Airport randomDest = randomDestinations.get(randomDestIndex);
+      String randomDest = randomDestinations.get(randomDestIndex).name();
 
-      DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm");
+      DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy/MM/dd|HH:mm");
       LocalDateTime localDateTime = LocalDateTime.now();
       LocalDateTime flightDate = localDateTime
               .plusDays(randomDate)

@@ -10,11 +10,21 @@ import java.util.Optional;
 
 public class BookingService {
   BookingDao bookingDao = new BookingDao();
-  FlightDao flightDao = new FlightDao();
-  UserDao userDao = new UserDao();
+  FlightDao flightDao;
+  UserDao userDao;
+
+
 
   public void create() {
-    Booking booking = new Booking(1, userDao.getByID(1).get(), flightDao.getByID(1).get());
+    FlightService flightService1 = new FlightService();
+    flightService1.generateFlight();
+    flightService1.fillList();
+
+    UserService sr = new UserService();
+    sr.fillList();
+
+    Booking booking = new Booking(1, sr.getByID(1).get(), flightService1.getByID(1).get());
+    bookingDao.bookings.add(booking);
     bookingDao.bookings.add(booking);
   }
 

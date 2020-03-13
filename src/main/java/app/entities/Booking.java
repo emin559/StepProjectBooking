@@ -29,4 +29,14 @@ public class Booking {
   public List<Person> getPersons() {
     return persons;
   }
+
+  @Override
+  public String toString() {
+    return "Booking{" +
+            "ID=" + ID +
+            ", user=" + user +
+            ", flight=" + flight +
+            ", persons=" + persons +
+            '}';
+  }
 }

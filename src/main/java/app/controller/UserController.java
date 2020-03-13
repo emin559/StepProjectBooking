@@ -39,6 +39,7 @@ public class UserController {
 
     public static void main(String[] args) {
         UserService sr = new UserService();
-        sr.register("Emin", "12345");
+        sr.fillList();
+        System.out.println(sr.getAll());
     }
 }

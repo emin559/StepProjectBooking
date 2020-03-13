@@ -49,4 +49,8 @@ public class UserService {
     }
   }
 
+  public void fillList(){
+    userDao.fillList();
+  }
+
 }
