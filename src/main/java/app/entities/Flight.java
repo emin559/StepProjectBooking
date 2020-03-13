@@ -2,7 +2,7 @@ package app.entities;
 
 import app.enums.Airport;
 
-public class Booking {
+public class Flight {
   private int ID;
   private Airport destination;
   private String date;
