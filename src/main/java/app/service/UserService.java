@@ -9,7 +9,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class UserService {
-  UserDao userDao = new UserDao();
+  UserDao userDao;
 
   public void create() {
     userDao.create();
@@ -40,7 +40,7 @@ public class UserService {
 
     try {
       List<String> collect = new BufferedReader(new FileReader(file)).lines().collect(Collectors.toList());
-      userDao.users.add(new User(collect.size()+1, username, pass));
+      userDao.getAll().add(new User(collect.size()+1, username, pass));
       userDao.create();
 
     } catch (Exception e) {

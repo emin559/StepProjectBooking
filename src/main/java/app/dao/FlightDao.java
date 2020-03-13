@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 public class FlightDao implements DAO<Flight> {
-  public List<Flight> flights = new ArrayList<>();
+  Database db=new Database();
 
   @Override
   public void create() {
@@ -17,18 +17,18 @@ public class FlightDao implements DAO<Flight> {
 
   @Override
   public List<Flight> getAll() {
-    return flights;
+    return db.getFlights();
   }
 
   @Override
   public Optional<Flight> getByID(int ID) {
-    return flights.stream().filter(flight -> ID == flight.getID()).findFirst();
+    return db.getFlights().stream().filter(flight -> ID == flight.getID()).findFirst();
   }
 
   @Override
   public boolean delete(int ID) {
-    if (ID > flights.size() || ID < 0) return false;
-    flights.removeIf(flight -> ID == flight.getID());
+    if (ID > db.getFlights().size() || ID < 0) return false;
+    db.getFlights().removeIf(flight -> ID == flight.getID());
     return true;
   }
 

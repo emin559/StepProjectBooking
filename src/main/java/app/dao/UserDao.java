@@ -1,18 +1,14 @@
 package app.dao;
 
-import app.entities.Flight;
 import app.entities.User;
 
 import java.io.*;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class UserDao implements DAO<User> {
-  public List<User> users = new ArrayList<>();
-
-
+  Database db=new Database();
 
   @Override
   public void create() {
@@ -21,7 +17,7 @@ public class UserDao implements DAO<User> {
     try {
       new BufferedReader(new FileReader(file)).lines().collect(Collectors.toList());
       BufferedWriter bw = new BufferedWriter(new FileWriter(file, true));
-      for(User user: users) {
+      for(User user: db.getUsers()) {
         bw.write(user.toString());
         bw.write("\n");
       }
@@ -33,7 +29,7 @@ public class UserDao implements DAO<User> {
 
       try {
         BufferedWriter bw = new BufferedWriter(new FileWriter(file));
-        for(User user: users) {
+        for(User user: db.getUsers()) {
           bw.write(user.toString());
           bw.write("\n");
         }
@@ -47,18 +43,18 @@ public class UserDao implements DAO<User> {
 
   @Override
   public List<User> getAll() {
-    return users;
+    return db.getUsers();
   }
 
   @Override
   public Optional<User> getByID(int ID) {
-    return users.stream().filter(user -> ID == user.getID()).findFirst();
+    return db.getUsers().stream().filter(user -> ID == user.getID()).findFirst();
   }
 
   @Override
   public boolean delete(int ID) {
-    if (ID > users.size() || ID < 0) return false;
-    users.removeIf(user -> ID == user.getID());
+    if (ID > db.getUsers().size() || ID < 0) return false;
+    db.getUsers().removeIf(user -> ID == user.getID());
     return true;
   }
 

@@ -7,8 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 public class BookingDao implements DAO<Booking> {
-  public List<Booking> bookings = new ArrayList<>();
-
+  Database db=new Database();
 
   @Override
   public void create() {
@@ -17,18 +16,18 @@ public class BookingDao implements DAO<Booking> {
 
   @Override
   public List<Booking> getAll() {
-    return bookings;
+    return db.getBookings();
   }
 
   @Override
   public Optional<Booking> getByID(int ID) {
-    return bookings.stream().filter(booking -> ID == booking.getID()).findFirst();
+    return db.getBookings().stream().filter(booking -> ID == booking.getID()).findFirst();
   }
 
   @Override
   public boolean delete(int ID) {
-    if (ID > bookings.size() || ID < 0) return false;
-    bookings.removeIf(booking -> ID == booking.getID());
+    if (ID > db.getBookings().size() || ID < 0) return false;
+    db.getBookings().removeIf(booking -> ID == booking.getID());
     return true;
   }
 

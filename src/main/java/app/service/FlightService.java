@@ -10,7 +10,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class FlightService {
-  FlightDao flightDao = new FlightDao();
+  FlightDao flightDao;
 
   public void create() {
     flightDao.create();
@@ -44,7 +44,7 @@ public class FlightService {
       if (lines.size() == 0) {
         BufferedWriter bw = new BufferedWriter(new FileWriter(file));
         FlightGenerator.generateFlight(15);
-        for (Flight flight : flightDao.flights) {
+        for (Flight flight : flightDao.getAll()) {
           bw.write(flight.toString());
           bw.write("\n");
         }
@@ -56,8 +56,8 @@ public class FlightService {
 
       try {
         BufferedWriter bw = new BufferedWriter(new FileWriter(file));
-        flightDao.flights.addAll(FlightGenerator.generateFlight(15));
-        for (Flight flight : flightDao.flights) {
+        flightDao.getAll().addAll(FlightGenerator.generateFlight(15));
+        for (Flight flight : flightDao.getAll()) {
           bw.write(flight.toString());
           bw.write("\n");
         }

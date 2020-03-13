@@ -9,13 +9,13 @@ import java.util.List;
 import java.util.Optional;
 
 public class BookingService {
-  BookingDao bookingDao = new BookingDao();
-  FlightDao flightDao = new FlightDao();
-  UserDao userDao = new UserDao();
+  BookingDao bookingDao;
+  FlightDao flightDao;
+  UserDao userDao;
 
   public void create() {
     Booking booking = new Booking(1, userDao.getByID(1).get(), flightDao.getByID(1).get());
-    bookingDao.bookings.add(booking);
+    bookingDao.getAll().add(booking);
   }
 
   public List<Booking> getAll() {
