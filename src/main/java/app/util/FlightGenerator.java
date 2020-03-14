@@ -32,12 +32,9 @@ public class FlightGenerator {
 
       String formattedFlightDate = flightDate.format(dateTimeFormatter);
 
-      generatedFlight.add(new Flight(i+1, randomDest, formattedFlightDate, seats, 0));
+      generatedFlight.add(new Flight(i + 1, randomDest, formattedFlightDate, seats, 0));
     }
     return generatedFlight;
   }
 
-  public static void main(String[] args) {
-    System.out.println(generateFlight(15));
-  }
 }

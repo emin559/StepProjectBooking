@@ -50,7 +50,7 @@ public class FlightService {
             List<String> lines = new BufferedReader(new FileReader(file)).lines().collect(Collectors.toList());
             if (lines.size() == 0) {
                 BufferedWriter bw = new BufferedWriter(new FileWriter(file));
-                FlightGenerator.generateFlight(15);
+                FlightGenerator.generateFlight(150);
                 for (Flight flight : flightDao.flights) {
                     bw.write(flight.toString());
                     bw.write("\n");
@@ -63,7 +63,7 @@ public class FlightService {
 
             try {
                 BufferedWriter bw = new BufferedWriter(new FileWriter(file));
-                flightDao.flights.addAll(FlightGenerator.generateFlight(15));
+                flightDao.flights.addAll(FlightGenerator.generateFlight(150));
                 for (Flight flight : flightDao.flights) {
                     bw.write(flight.toString());
                     bw.write("\n");
@@ -98,6 +98,27 @@ public class FlightService {
         });
 
         return searchingFlights;
+
+    }
+
+    public List<Flight> getByDate(){
+        ArrayList<Flight> flightByDate=new ArrayList<>();
+
+        DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("yyyy/MM/dd|HH:mm");
+
+        LocalDate searchDate = LocalDate.now().plusDays(1);
+
+        flightDao.getAll().forEach(flight -> {
+
+
+            LocalDate flightDate = LocalDate.parse(flight.getDate(), formatter2);
+            if (searchDate.getYear() == flightDate.getYear() && searchDate.getMonth() == flightDate.getMonth()
+                    && searchDate.getDayOfMonth() >= flightDate.getDayOfMonth()){
+                flightByDate.add(flight);
+            }
+        });
+
+        return flightByDate;
 
     }
 

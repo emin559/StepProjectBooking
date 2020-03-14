@@ -34,13 +34,20 @@ public class FlightConroller {
         return flightService.update(entity);
     }
 
-    public static void main(String[] args) {
-        FlightService flightService1 = new FlightService();
-        flightService1.generateFlight();
-        flightService1.fillList();
-        System.out.println(flightService1.getAll());
-        System.out.println(flightService1.search(Airport.GANJA, "20/03/2020", 2));
 
+    public void generateFlight() {
+        flightService.generateFlight();
     }
 
+    public void fillList() {
+        flightService.fillList();
+    }
+
+    public List<Flight> search(Airport destination, String date, int ticket) {
+        return flightService.search(destination, date, ticket);
+    }
+
+    public List<Flight> getByDate() {
+        return flightService.getByDate();
+    }
 }

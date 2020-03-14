@@ -1,9 +1,14 @@
 package app;
 
-import app.ui.MainMenu;
+import app.controller.UserController;
+import app.ui.EntranceMenu;
+import app.ui.GuestMenu;
+import app.ui.LoginMenu;
+
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println(MainMenu.addMainMenu());
+        EntranceMenu.addEntranceMenu();
+        }
     }
-}

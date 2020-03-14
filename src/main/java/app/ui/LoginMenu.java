@@ -1,6 +1,6 @@
 package app.ui;
 
-public class MainMenu {
+public class LoginMenu {
     public static String  addMainMenu(){
         StringBuilder sb=new StringBuilder();
         sb.append("=================================\n");

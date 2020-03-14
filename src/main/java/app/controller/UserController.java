@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 public class UserController {
-    UserService userService;
+    UserService userService= new UserService();
 
     public void create() {
         userService.create();
@@ -37,9 +37,4 @@ public class UserController {
         userService.register(username, pass);
     }
 
-    public static void main(String[] args) {
-        UserService sr = new UserService();
-        sr.fillList();
-        System.out.println(sr.getAll());
-    }
 }
