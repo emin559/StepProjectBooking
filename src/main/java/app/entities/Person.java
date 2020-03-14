@@ -22,4 +22,9 @@ public class Person {
   public String getSurname() {
     return surname;
   }
+
+  @Override
+  public String toString() {
+    return String.format("Person{ID=%d, name='%s', surname='%s'}", ID, name, surname);
+  }
 }

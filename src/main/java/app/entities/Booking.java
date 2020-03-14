@@ -8,10 +8,11 @@ public class Booking {
   private Flight flight;
   private List<Person> persons;
 
-  public Booking(int ID, User user, Flight flight) {
+  public Booking(int ID, User user, Flight flight, List<Person> passengers) {
     this.ID = ID;
     this.user = user;
     this.flight = flight;
+    this.persons = passengers;
   }
 
   public int getID() {
@@ -32,11 +33,6 @@ public class Booking {
 
   @Override
   public String toString() {
-    return "Booking{" +
-            "ID=" + ID +
-            ", user=" + user +
-            ", flight=" + flight +
-            ", persons=" + persons +
-            '}';
+    return String.format("Booking{ID=%d, user=%s, flight=%s, persons=%s}", ID, user, flight, persons);
   }
 }

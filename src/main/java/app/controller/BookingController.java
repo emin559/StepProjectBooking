@@ -6,7 +6,7 @@ import app.service.BookingService;
 import java.util.List;
 import java.util.Optional;
 
-public class BookingConrtoller {
+public class BookingController {
     BookingService bookingService =new BookingService();
 
     public void create() {

@@ -1,7 +1,6 @@
 package app.ui;
 
-import app.controller.FlightConroller;
-import app.controller.UserController;
+import app.controller.FlightController;
 
 import java.util.Scanner;
 
@@ -17,7 +16,7 @@ public class GuestMenu {
         sb.append("4. Go back to main menu\n");
         sb.append("=================================\n");
 
-        FlightConroller flightConroller = new FlightConroller();
+        FlightController flightController = new FlightController();
 
         Scanner scanner = new Scanner(System.in);
         String command1 = "";
@@ -27,7 +26,7 @@ public class GuestMenu {
             command1 = scanner.nextLine();
             switch (command1) {
                 case "1":
-                    System.out.println(flightConroller.getByDate());
+                    System.out.println(flightController.getByDate());
                     System.out.println("eee");
                     command1 = scanner.nextLine();
                     break;

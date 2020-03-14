@@ -7,7 +7,7 @@ import app.service.FlightService;
 import java.util.List;
 import java.util.Optional;
 
-public class FlightConroller {
+public class FlightController {
     public FlightService flightService = new FlightService();
 
     public void create() {
