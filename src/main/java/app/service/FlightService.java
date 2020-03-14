@@ -84,15 +84,15 @@ public class FlightService {
 
         ArrayList<Flight> searchingFlights = new ArrayList<>();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("yyyy/MM/dd|HH:mm");
         LocalDate searchDate = LocalDate.parse(date, formatter);
 
         flightDao.getAll().forEach(flight -> {
-            long flightDate = flight.getDate();
-            LocalDateTime flightOriginal =
-                    LocalDateTime.ofInstant(Instant.ofEpochMilli(flightDate),
-                            TimeZone.getDefault().toZoneId());
-            if (flight.getDestination() == destination && searchDate.getYear() == flightOriginal.getYear() && searchDate.getMonth() == flightOriginal.getMonth()
-                    && searchDate.getDayOfMonth() == flightOriginal.getDayOfMonth()) {
+
+
+            LocalDate flightDate = LocalDate.parse(flight.getDate(), formatter2);
+            if (flight.getDestination() == destination  && searchDate.getYear() == flightDate.getYear() && searchDate.getMonth() == flightDate.getMonth()
+                    && searchDate.getDayOfMonth() == flightDate.getDayOfMonth()){
                 searchingFlights.add(flight);
             }
         });
