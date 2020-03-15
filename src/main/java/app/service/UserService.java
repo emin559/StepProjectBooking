@@ -4,6 +4,7 @@ import app.dao.UserDao;
 import app.entities.User;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -49,8 +50,24 @@ public class UserService {
     }
   }
 
-  public void fillList(){
-    userDao.fillList();
+  public void fillList() {
+    File file = new File("src/main/java/app/database/user.txt");
+    List<User> userList = new ArrayList<>();
+
+    try {
+      List<String> lines = new BufferedReader(new FileReader(file)).lines().collect(Collectors.toList());
+
+      for (String line : lines) {
+        String[] split1 = line.split(" ");
+        userList.add(new User(Integer.parseInt(split1[0].trim()),split1[1].trim(),split1[2].trim()));
+      }
+
+      userDao.users.addAll(userList);
+
+    } catch (Exception e) {
+      System.out.printf("Database file: '%s' not found! \n", file);
+    }
+
   }
 
 }

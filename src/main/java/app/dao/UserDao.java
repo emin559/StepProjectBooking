@@ -76,25 +76,5 @@ public class UserDao implements DAO<User> {
   public boolean update(User entity) {
     return false;
   }
-
-  public void fillList() {
-    File file = new File("src/main/java/app/database/user.txt");
-    List<User> userList = new ArrayList<>();
-
-    try {
-      List<String> lines = new BufferedReader(new FileReader(file)).lines().collect(Collectors.toList());
-
-      for (String line : lines) {
-        String[] split1 = line.split(" ");
-        userList.add(new User(Integer.parseInt(split1[0].trim()),split1[1].trim(),split1[2].trim()));
-      }
-
-      users.addAll(userList);
-
-    } catch (Exception e) {
-      System.out.printf("Database file: '%s' not found! \n", file);
-    }
-
-  }
 }
 

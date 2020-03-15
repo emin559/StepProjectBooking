@@ -48,6 +48,6 @@ public class FlightController {
     }
 
     public List<Flight> getByDate() {
-        return flightService.getByDate();
+        return flightService.getFollowingFlights();
     }
 }

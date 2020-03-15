@@ -51,31 +51,4 @@ public class FlightDao implements DAO<Flight> {
     return false;
   }
 
-  public void generator() {
-    FlightGenerator.generateFlight(50);
-  }
-
-  public void fillList() {
-    File file = new File("src/main/java/app/database/flight.txt");
-    List<Flight> flightList = new ArrayList<>();
-
-    try {
-      List<String> lines = new BufferedReader(new FileReader(file)).lines().collect(Collectors.toList());
-      lines.stream().map(line -> line.split(" ")).forEach(split1 -> {
-        split1[2] = split1[2].replaceAll("T", "|");
-        flightList.add(new Flight(Integer.parseInt(split1[0].trim()),
-                split1[1].trim(),
-                split1[2].trim(),
-                Integer.parseInt(split1[3].trim()),
-                Integer.parseInt(split1[4].trim())));
-
-        flights.addAll(flightList);
-      });
-
-    } catch (Exception e) {
-      System.out.printf(" Database file: '%s' not found! \n", file);
-    }
-
-  }
-
 }
