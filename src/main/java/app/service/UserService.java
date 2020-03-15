@@ -1,7 +1,9 @@
 package app.service;
 
 import app.dao.UserDao;
+import app.entities.Flight;
 import app.entities.User;
+import app.util.FlightGenerator;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -20,9 +22,14 @@ public class UserService {
     return userDao.getAll();
   }
 
-  public Optional<User> getByID(int ID) {
-    return userDao.getByID(ID);
-  }
+  public String getByID(int ID) {
+    StringBuilder sb = new StringBuilder();
+    if (userDao.getByID(ID).isPresent()) {
+      sb.append(userDao.getByID(ID).get().represent());
+    } else {
+      sb.append("Flight not found");
+    };
+    return sb.toString();  }
 
   public boolean delete(int ID) {
     return userDao.delete(ID);
@@ -42,10 +49,19 @@ public class UserService {
     try {
       List<String> collect = new BufferedReader(new FileReader(file)).lines().collect(Collectors.toList());
       userDao.users.add(new User(collect.size()+1, username, pass));
-      userDao.create();
 
     } catch (Exception e) {
       System.out.printf(" %s File not found! \n", file);
+
+      try {
+        BufferedWriter bw = new BufferedWriter(new FileWriter(file));
+        userDao.users.add(new User(1, username, pass));
+
+        bw.close();
+
+      } catch (Exception e2) {
+        System.out.println("Something went wrong!");
+      }
 
     }
   }

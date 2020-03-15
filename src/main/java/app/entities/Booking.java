@@ -8,6 +8,12 @@ public class Booking {
   private Flight flight;
   private List<Person> persons;
 
+  public Booking(int ID, User user, Flight flight) {
+    this.ID = ID;
+    this.user = user;
+    this.flight = flight;
+  }
+
   public Booking(int ID, User user, Flight flight, List<Person> passengers) {
     this.ID = ID;
     this.user = user;
@@ -29,6 +35,11 @@ public class Booking {
 
   public List<Person> getPersons() {
     return persons;
+  }
+
+  public String represent() {
+    return String.format("BOOKING ID: %d USER: '%s' FLIGHT: '%s' PASSENGERS: '%s' \n", ID,
+            user.represent(), flight.represent(), persons.toString());
   }
 
   @Override

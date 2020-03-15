@@ -1,6 +1,9 @@
 package app.controller;
 
 import app.entities.Booking;
+import app.entities.Flight;
+import app.entities.Person;
+import app.entities.User;
 import app.service.BookingService;
 
 import java.util.List;
@@ -17,7 +20,7 @@ public class BookingController {
         return bookingService.getAll();
     }
 
-    public Optional<Booking> getByID(int ID) {
+    public String getByID(int ID) {
         return bookingService.getByID(ID);
     }
 
@@ -31,5 +34,10 @@ public class BookingController {
 
     public boolean update(Booking entity) {
         return bookingService.update(entity);
+    }
+
+
+    public void addBooking(User user, Flight flight, List<Person> passengers) {
+        bookingService.addBooking(user, flight, passengers);
     }
 }

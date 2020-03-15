@@ -30,8 +30,12 @@ public class FlightDao implements DAO<Flight> {
 
   @Override
   public Optional<Flight> getByID(int ID) {
-    return flights.stream().filter(flight -> ID == flight.getID()).findFirst();
-    //check orElse
+    try{
+      return flights.stream().filter(flight -> ID == flight.getID()).findFirst();
+    }
+    catch(Exception e) {
+      return Optional.empty();
+    }
   }
 
   @Override

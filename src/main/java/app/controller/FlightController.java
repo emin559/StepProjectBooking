@@ -18,7 +18,7 @@ public class FlightController {
         return flightService.getAll();
     }
 
-    public Optional<Flight> getByID(int ID) {
+    public String getByID(int ID) {
         return flightService.getByID(ID);
     }
 
@@ -43,11 +43,11 @@ public class FlightController {
         flightService.fillList();
     }
 
-    public List<Flight> search(Airport destination, String date, int ticket) {
+    public String search(Airport destination, String date, int ticket) {
         return flightService.search(destination, date, ticket);
     }
 
-    public List<Flight> getByDate() {
+    public String getFollowingFlights() {
         return flightService.getFollowingFlights();
     }
 }

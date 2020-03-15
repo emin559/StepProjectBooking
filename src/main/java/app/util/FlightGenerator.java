@@ -21,6 +21,7 @@ public class FlightGenerator {
     for (int i = 0; i < count; i++) {
       int randomDestIndex = rndm.nextInt(randomDestinations.size() - 1);
       int randomDate = rndm.nextInt(15);
+      int randomMinute = rndm.nextInt(150);
       String randomDest = randomDestinations.get(randomDestIndex).name();
 
       DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy/MM/dd|HH:mm");
@@ -28,7 +29,7 @@ public class FlightGenerator {
       LocalDateTime flightDate = localDateTime
               .plusDays(randomDate)
               .plusHours(randomDate)
-              .plusMinutes(randomDate);
+              .plusMinutes(randomMinute);
 
       String formattedFlightDate = flightDate.format(dateTimeFormatter);
 

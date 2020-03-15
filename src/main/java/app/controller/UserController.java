@@ -17,7 +17,7 @@ public class UserController {
         return userService.getAll();
     }
 
-    public Optional<User> getByID(int ID) {
+    public String getByID(int ID) {
         return userService.getByID(ID);
     }
 
@@ -37,4 +37,7 @@ public class UserController {
         userService.register(username, pass);
     }
 
+    public void fillList() {
+        userService.fillList();
+    }
 }

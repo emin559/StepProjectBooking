@@ -27,8 +27,14 @@ public class FlightService {
     return flightDao.getAll();
   }
 
-  public Optional<Flight> getByID(int ID) {
-    return flightDao.getByID(ID);
+  public String getByID(int ID) {
+    StringBuilder sb = new StringBuilder();
+     if (flightDao.getByID(ID).isPresent()) {
+       sb.append(flightDao.getByID(ID).get().represent());
+     } else {
+       sb.append("Flight not found");
+     };
+     return sb.toString();
   }
 
   public boolean delete(int ID) {
@@ -50,7 +56,7 @@ public class FlightService {
       List<String> lines = new BufferedReader(new FileReader(file)).lines().collect(Collectors.toList());
       if (lines.size() == 0) {
         BufferedWriter bw = new BufferedWriter(new FileWriter(file));
-        FlightGenerator.generateFlight(150);
+        FlightGenerator.generateFlight(50);
         for (Flight flight : flightDao.flights) {
           bw.write(flight.toString());
           bw.write("\n");
@@ -63,7 +69,7 @@ public class FlightService {
 
       try {
         BufferedWriter bw = new BufferedWriter(new FileWriter(file));
-        flightDao.flights.addAll(FlightGenerator.generateFlight(150));
+        flightDao.flights.addAll(FlightGenerator.generateFlight(50));
         for (Flight flight : flightDao.flights) {
           bw.write(flight.toString());
           bw.write("\n");
@@ -90,8 +96,8 @@ public class FlightService {
                 Integer.parseInt(split1[3].trim()),
                 Integer.parseInt(split1[4].trim())));
 
-        flightDao.flights.addAll(flightList);
       });
+      flightDao.flights.addAll(flightList);
 
     } catch (Exception e) {
       System.out.printf(" Database file: '%s' not found! \n", file);
@@ -99,9 +105,10 @@ public class FlightService {
 
   }
 
-  public List<Flight> search(Airport destination, String date, int ticket) {
+  public String search(Airport destination, String date, int ticket) {
 
     ArrayList<Flight> searchingFlights = new ArrayList<>();
+    StringBuilder sb = new StringBuilder();
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("yyyy/MM/dd|HH:mm");
     LocalDate searchDate = LocalDate.parse(date, formatter);
@@ -115,32 +122,34 @@ public class FlightService {
               searchDate.getDayOfMonth() == flightDate.getDayOfMonth() &&
               flight.getSeatCount() - flight.getReservedSeats() >= ticket) {
         searchingFlights.add(flight);
-        //check null
+        searchingFlights.forEach(sf-> sb.append(sf.represent()));
       }
     });
 
-    return searchingFlights;
+    if (searchingFlights.size()==0) sb.append("Flight with your input could not found :(");
+    return sb.toString();
 
   }
 
-  public List<Flight> getFollowingFlights() {
+  public String getFollowingFlights() {
     ArrayList<Flight> followingFlights = new ArrayList<>();
 
     DateTimeFormatter formatter2 = DateTimeFormatter.ofPattern("yyyy/MM/dd|HH:mm");
     LocalDate followingDate = LocalDate.now().plusDays(1);
 
-    flightDao.getAll().forEach(flight -> {
-      LocalDate flightDate = LocalDate.parse(flight.getDate(), formatter2);
+    for (Flight flight1 : flightDao.getAll()) {
+      LocalDate flightDate = LocalDate.parse(flight1.getDate(), formatter2);
 
       if (followingDate.getYear() == flightDate.getYear() &&
               followingDate.getMonth() == flightDate.getMonth() &&
-              followingDate.getDayOfMonth() >= flightDate.getDayOfMonth() &&
-              flightDate.getDayOfMonth() >= LocalDate.now().getDayOfMonth()
-      ) followingFlights.add(flight);
+              followingDate.getDayOfMonth() >= flightDate.getDayOfMonth()
+      ) followingFlights.add(flight1);
 
-    });
+    }
 
-    return followingFlights;
+    StringBuilder flightBuilder = new StringBuilder();
+    followingFlights.forEach(flight-> flightBuilder.append(flight.represent()));
+    return flightBuilder.toString();
   }
 
 

@@ -8,6 +8,10 @@ public class User {
   private String password;
   private List<Booking> bookings;
 
+  public User(String username, String password) {
+    this.username = username;
+    this.password = password;
+  }
 
   public User(int ID, String username, String password) {
     this.ID = ID;
@@ -15,11 +19,11 @@ public class User {
     this.password = password;
   }
 
-  public User(int ID, String username, String password, List<Booking> flights) {
+  public User(int ID, String username, String password, List<Booking> bookings) {
     this.ID = ID;
     this.username = username;
     this.password = password;
-    this.bookings = flights;
+    this.bookings = bookings;
   }
 
   public int getID() {
@@ -36,6 +40,11 @@ public class User {
 
   public List<Booking> getBookings() {
     return bookings;
+  }
+
+  public String represent() {
+    return String.format("USER ID: %d USERNAME: '%s' PASSWORD: '%s' BOOKINGS: '%s' \n", ID,
+            username, password, bookings.toString());
   }
 
   @Override

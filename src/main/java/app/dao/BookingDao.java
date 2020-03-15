@@ -26,7 +26,12 @@ public class BookingDao implements DAO<Booking> {
 
   @Override
   public Optional<Booking> getByID(int ID) {
-    return bookings.stream().filter(booking -> ID == booking.getID()).findFirst(); //check orElse
+    try{
+      return bookings.stream().filter(booking -> ID == booking.getID()).findFirst();
+    }
+    catch(Exception e) {
+      return Optional.empty();
+    }
   }
 
   @Override
@@ -38,11 +43,11 @@ public class BookingDao implements DAO<Booking> {
 
   @Override
   public boolean save(Booking entity) {
-    File file = new File("src/main/java/app/database/flight.txt");
+    File file = new File("src/main/java/app/database/booking.txt");
 
     try {
       new BufferedReader(new FileReader(file)).lines().collect(Collectors.toList());
-      BufferedWriter bw = new BufferedWriter(new FileWriter(file));
+      BufferedWriter bw = new BufferedWriter(new FileWriter(file, true));
 
       for (Booking booking : bookings) {
         bw.write(booking.toString());
@@ -54,7 +59,21 @@ public class BookingDao implements DAO<Booking> {
 
     } catch (Exception e) {
       System.out.printf("Database file: '%s' not found! \n", file);
-      return false;
+
+      try {
+        BufferedWriter bw = new BufferedWriter(new FileWriter(file));
+
+        for (Booking booking : bookings) {
+          bw.write(booking.toString());
+          bw.write("\n");
+        }
+
+        bw.close();
+        return true;
+
+      } catch (Exception e1) {
+        return false;
+      }
     }
 
   }

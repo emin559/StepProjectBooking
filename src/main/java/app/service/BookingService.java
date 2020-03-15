@@ -5,6 +5,7 @@ import app.dao.FlightDao;
 import app.dao.UserDao;
 import app.entities.Booking;
 import app.entities.Flight;
+import app.entities.Person;
 import app.entities.User;
 import app.util.FlightGenerator;
 
@@ -26,16 +27,25 @@ public class BookingService {
     return bookingDao.getAll();
   }
 
-  public Optional<Booking> getByID(int ID) {
-    return bookingDao.getByID(ID);
+  public String getByID(int ID) {
+    StringBuilder sb = new StringBuilder();
+    if (bookingDao.getByID(ID).isPresent()) {
+      sb.append(bookingDao.getByID(ID).get().represent());
+    } else {
+      sb.append("Flight not found");
+    }
+    ;
+    return sb.toString();
   }
 
   public boolean delete(int ID) {
     return bookingDao.delete(ID);
   }
 
-  public void addBooking(User user, Flight flight, int passengerCount) {
-    Booking booking = new Booking(1, userDao.getByID(user.getID()).get(), flightDao.getByID(flight.getID()).get(), ); //check ID, userID, passengers
+  public void addBooking(User user, Flight flight, List<Person> passengers) {
+    Booking booking = new Booking(bookingDao.bookings.size() + 1,
+            userDao.getByID(user.getID()).get(),
+            flightDao.getByID(flight.getID()).get()); //check ID, userID, passengers
     bookingDao.bookings.add(booking);
 
   }

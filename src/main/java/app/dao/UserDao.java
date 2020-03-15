@@ -25,8 +25,12 @@ public class UserDao implements DAO<User> {
 
   @Override
   public Optional<User> getByID(int ID) {
-    return users.stream().filter(user -> ID == user.getID()).findFirst();
-    //check orElse
+    try{
+      return users.stream().filter(user -> ID == user.getID()).findFirst();
+    }
+    catch(Exception e) {
+      return Optional.empty();
+    }
   }
 
   @Override
