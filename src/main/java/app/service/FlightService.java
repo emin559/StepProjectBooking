@@ -27,14 +27,12 @@ public class FlightService {
     return flightDao.getAll();
   }
 
-  public String getByID(int ID) {
-    StringBuilder sb = new StringBuilder();
+  public Optional<Flight> getByID(int ID) {
      if (flightDao.getByID(ID).isPresent()) {
-       sb.append(flightDao.getByID(ID).get().represent());
+       return flightDao.getByID(ID);
      } else {
-       sb.append("Flight not found");
-     };
-     return sb.toString();
+       return Optional.empty();
+     }
   }
 
   public boolean delete(int ID) {

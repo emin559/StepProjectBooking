@@ -44,6 +44,10 @@ public class Flight {
         return reservedSeats;
     }
 
+    public void setReservedSeats(int reservedSeats) {
+        this.reservedSeats = reservedSeats;
+    }
+
     public String represent() {
         return String.format("FLIGHT ID: %d FROM: 'KYIV (KBP)' TO: '%s (%s)' DATE: '%s' FREE SEATS: %d \n", ID,
                 destination.name(), destination.getCode(), date, seatCount-reservedSeats);

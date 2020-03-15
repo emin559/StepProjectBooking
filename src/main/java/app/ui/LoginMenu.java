@@ -76,7 +76,7 @@ public class LoginMenu {
               String passwordLogin = scanner.nextLine();
 
               if (userController.getAll().stream()
-                      .anyMatch(user -> user.getUsername().equals(usernameLogin) && user.getPassword().equals(passwordLogin))) {
+                      .anyMatch(user -> user.getUsername().equals(usernameLogin) || user.getPassword().equals(passwordLogin))) {
 
                 User user = userController.getAll()
                         .stream()
@@ -92,7 +92,10 @@ public class LoginMenu {
                     System.out.println("Enter passenger surname:");
                     String pSurname = scanner.nextLine();
                     passengers.add(new Person(pName, pSurname));
-                    bookingController.addBooking(user, flightController.getByID(flightID), passengers);
+                    flightController.getAll().get(flightID)
+                            .setReservedSeats(flightController.getAll().get(flightID).getReservedSeats()+tickets);
+
+                    bookingController.addBooking(user, flightController.getByID(flightID).get(), passengers);
                   }
 
 
@@ -105,7 +108,6 @@ public class LoginMenu {
                 command2 = scanner.nextLine();
               }
 
-              bookingController.addBooking();
             } else if (command2.toLowerCase().equals("no")) {
               LoginMenu.addMainMenu();
             } else {
@@ -114,6 +116,7 @@ public class LoginMenu {
 
           } catch (Exception e) {
             System.out.println("Please enter valid input!!!");
+            System.out.println(bookingController.getAll());
             command2 = scanner.nextLine();
           }
           break;
