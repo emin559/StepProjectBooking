@@ -39,8 +39,8 @@ public class FlightService {
     return flightDao.delete(ID);
   }
 
-  public boolean save(Flight entity) {
-    return flightDao.save(entity);
+  public boolean save() {
+    return flightDao.save();
   }
 
   public boolean update(Flight entity) {

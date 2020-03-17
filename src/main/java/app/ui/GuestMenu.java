@@ -38,7 +38,7 @@ public class GuestMenu {
                     System.out.print("Please enter the flight ID: ");
                     try{
                         int flightID = Integer.parseInt(scanner.nextLine());
-                        System.out.println(flightController.getByID(flightID));
+                        System.out.println(flightController.getByID(flightID).represent());
                         command1 = scanner.nextLine();
                     } catch(Exception e){
                         System.out.println("Please enter valid input!!!");

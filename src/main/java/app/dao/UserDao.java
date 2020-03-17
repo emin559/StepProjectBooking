@@ -41,12 +41,12 @@ public class UserDao implements DAO<User> {
   }
 
   @Override
-  public boolean save(User entity) {
+  public boolean save() {
     File file = new File("src/main/java/app/database/user.txt");
 
     try {
       new BufferedReader(new FileReader(file)).lines().collect(Collectors.toList());
-      BufferedWriter bw = new BufferedWriter(new FileWriter(file, true));
+      BufferedWriter bw = new BufferedWriter(new FileWriter(file));
 
       for (User user : users) {
         bw.write(user.toString());

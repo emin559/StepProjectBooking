@@ -28,8 +28,8 @@ public class BookingController {
         return bookingService.delete(ID);
     }
 
-    public boolean save(Booking entity) {
-        return bookingService.save(entity);
+    public boolean save() {
+        return bookingService.save();
     }
 
     public boolean update(Booking entity) {

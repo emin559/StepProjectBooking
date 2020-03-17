@@ -12,7 +12,7 @@ public interface DAO<T> {
 
   boolean delete(int ID);
 
-  boolean save(T entity);
+  boolean save();
 
   boolean update(T entity);
 }

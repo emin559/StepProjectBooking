@@ -47,9 +47,9 @@ public class BookingService {
 
   }
 
-  public boolean save(Booking booking) {
+  public boolean save() {
 
-    return bookingDao.save(booking);
+    return bookingDao.save();
   }
 
   public boolean update(Booking entity) {

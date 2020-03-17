@@ -42,7 +42,7 @@ public class BookingDao implements DAO<Booking> {
   }
 
   @Override
-  public boolean save(Booking entity) {
+  public boolean save() {
     File file = new File("src/main/java/app/database/booking.txt");
 
     try {

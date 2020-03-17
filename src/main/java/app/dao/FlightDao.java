@@ -46,7 +46,7 @@ public class FlightDao implements DAO<Flight> {
   }
 
   @Override
-  public boolean save(Flight entity) {
+  public boolean save() {
     return false;
   }
 

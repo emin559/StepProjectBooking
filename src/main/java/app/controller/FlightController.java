@@ -26,8 +26,8 @@ public class FlightController {
         return flightService.delete(ID);
     }
 
-    public boolean save(Flight entity) {
-        return flightService.save(entity);
+    public boolean save() {
+        return flightService.save();
     }
 
     public boolean update(Flight entity) {

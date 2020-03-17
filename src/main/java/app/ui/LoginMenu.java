@@ -38,7 +38,7 @@ public class LoginMenu {
 
     Scanner scanner = new Scanner(System.in);
     String command2 = "";
-    while (!command2.equals("4")) {
+    while (!command2.equals("6")) {
       System.out.println(sb.toString());
       System.out.print("Please enter your command by index: ");
       command2 = scanner.nextLine();
@@ -152,13 +152,14 @@ public class LoginMenu {
 
             try {
               int bookingID = Integer.parseInt(scanner.nextLine());
-              int flightID = bookingController.getAll().indexOf(bookingController.getByID(bookingID));
+              int flightID = bookingController.getByID(bookingID).getFlight().getID();
+
               flightController.getByID(flightID).setReservedSeats(flightController.getByID(flightID).getReservedSeats() -
                       bookingController.getByID(bookingID).getPersons().size());
-
               bookingController.delete(bookingID);
-              flightController.getAll().forEach(fl -> System.out.println(fl.represent()));
 
+              System.out.println("Book cancelled successfully. Please press enter to go back to main menu");
+              command2 = scanner.nextLine();
 
             } catch (Exception e) {
               System.out.println("Please enter valid input!!!");
@@ -171,6 +172,46 @@ public class LoginMenu {
             command2 = scanner.nextLine();
           }
           break;
+
+        case "5":
+          System.out.print("Please confirm username:");
+          String usernameLoginMF = scanner.nextLine();
+          System.out.print("Please confirm password:");
+          String passwordLoginMF = scanner.nextLine();
+
+          if (userController.getAll().stream()
+                  .anyMatch(u -> u.getUsername().equals(usernameLoginMF) && u.getPassword().equals(passwordLoginMF))) {
+
+
+            User user = userController.getAll()
+                    .stream()
+                    .filter(u -> u.getUsername().equals(usernameLoginMF) && u.getPassword().equals(passwordLoginMF))
+                    .findFirst()
+                    .get();
+
+            System.out.println("YOUR FLIGHTS:");
+            List<Booking> userBookings = bookingController.getAll()
+                    .stream()
+                    .filter(booking -> booking.getUser().equals(user)).collect(Collectors.toList());
+            if (userBookings.size() == 0) System.out.println("You have not booked any flight yet");
+              userBookings.forEach(ub -> System.out.println(ub.represent()));
+
+            System.out.println("Please press enter to back to main menu");
+            command2 = scanner.nextLine();
+
+          } else {
+            System.out.println("Please input correct username and password");
+            command2 = scanner.nextLine();
+          }
+          break;
+
+        case "6":
+          System.out.println("Dear user, thank you for choosing us :). We hope you will enjoy your travel.");
+          break;
+
+        default:
+          System.out.println("Please enter valid input!");
+          command2  = scanner.nextLine();
       }
     }
   }

@@ -21,7 +21,6 @@ public class EntranceMenu {
 
     UserController userController = new UserController();
     userController.fillList();
-    System.out.println(userController.getAll());
 
     Scanner scanner = new Scanner(System.in);
     String command = "";
@@ -71,6 +70,7 @@ public class EntranceMenu {
 
         case "5":
           System.out.println("Bye Bye");
+          userController.save();
           break;
 
         default:

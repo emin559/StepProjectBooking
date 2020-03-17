@@ -33,8 +33,8 @@ public class UserService {
     return userDao.delete(ID);
   }
 
-  public boolean save(User entity) {
-    return userDao.save(entity);
+  public boolean save() {
+    return userDao.save();
   }
 
   public boolean update(User entity) {

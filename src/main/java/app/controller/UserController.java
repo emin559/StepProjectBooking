@@ -25,8 +25,8 @@ public class UserController {
         return userService.delete(ID);
     }
 
-    public boolean save(User entity) {
-        return userService.save(entity);
+    public boolean save() {
+        return userService.save();
     }
 
     public boolean update(User entity) {
