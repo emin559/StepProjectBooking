@@ -27,15 +27,12 @@ public class BookingService {
     return bookingDao.getAll();
   }
 
-  public String getByID(int ID) {
-    StringBuilder sb = new StringBuilder();
+  public Optional<Booking> getByID(int ID) {
     if (bookingDao.getByID(ID).isPresent()) {
-      sb.append(bookingDao.getByID(ID).get().represent());
+      return bookingDao.getByID(ID);
     } else {
-      sb.append("Flight not found");
+      return Optional.empty();
     }
-    ;
-    return sb.toString();
   }
 
   public boolean delete(int ID) {
@@ -44,8 +41,8 @@ public class BookingService {
 
   public void addBooking(User user, Flight flight, List<Person> passengers) {
     Booking booking = new Booking(bookingDao.bookings.size() + 1,
-            userDao.getByID(user.getID()).get(),
-            flightDao.getByID(flight.getID()).get()); //check ID, userID, passengers
+            user,
+            flight, passengers); //check ID, userID, passengers
     bookingDao.bookings.add(booking);
 
   }

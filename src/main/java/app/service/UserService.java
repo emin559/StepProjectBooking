@@ -22,15 +22,13 @@ public class UserService {
     return userDao.getAll();
   }
 
-  public String getByID(int ID) {
-    StringBuilder sb = new StringBuilder();
+  public Optional<User> getByID(int ID) {
     if (userDao.getByID(ID).isPresent()) {
-      sb.append(userDao.getByID(ID).get().represent());
+      return userDao.getByID(ID);
     } else {
-      sb.append("Flight not found");
-    };
-    return sb.toString();  }
-
+      return Optional.empty();
+    }
+  }
   public boolean delete(int ID) {
     return userDao.delete(ID);
   }

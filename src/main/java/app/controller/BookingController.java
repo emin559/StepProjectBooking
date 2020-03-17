@@ -20,8 +20,8 @@ public class BookingController {
         return bookingService.getAll();
     }
 
-    public String getByID(int ID) {
-        return bookingService.getByID(ID);
+    public Booking getByID(int ID) {
+        return bookingService.getByID(ID).get();
     }
 
     public boolean delete(int ID) {

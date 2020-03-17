@@ -17,8 +17,8 @@ public class UserController {
         return userService.getAll();
     }
 
-    public String getByID(int ID) {
-        return userService.getByID(ID);
+    public User getByID(int ID) {
+        return userService.getByID(ID).get();
     }
 
     public boolean delete(int ID) {

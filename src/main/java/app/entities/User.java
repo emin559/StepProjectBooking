@@ -1,12 +1,13 @@
 package app.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class User {
   private int ID;
   private String username;
   private String password;
-  private List<Booking> bookings;
+  private List<Booking> bookings = new ArrayList<>();
 
   public User(String username, String password) {
     this.username = username;
@@ -43,8 +44,7 @@ public class User {
   }
 
   public String represent() {
-    return String.format("USER ID: %d USERNAME: '%s' PASSWORD: '%s' BOOKINGS: '%s' \n", ID,
-            username, password, bookings.toString());
+    return String.format("USER: '%s' \n", getUsername());
   }
 
   @Override

@@ -18,8 +18,8 @@ public class FlightController {
         return flightService.getAll();
     }
 
-    public Optional<Flight> getByID(int ID) {
-        return flightService.getByID(ID);
+    public Flight getByID(int ID) {
+        return flightService.getByID(ID).get();
     }
 
     public boolean delete(int ID) {
