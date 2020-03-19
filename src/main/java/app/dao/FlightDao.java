@@ -4,10 +4,7 @@ import app.entities.Booking;
 import app.entities.Flight;
 import app.util.FlightGenerator;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import java.io.*;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
@@ -47,7 +44,39 @@ public class FlightDao implements DAO<Flight> {
 
   @Override
   public boolean save() {
-    return false;
+    File file = new File("src/main/java/app/database/flight.txt");
+
+    try {
+      new BufferedReader(new FileReader(file)).lines().collect(Collectors.toList());
+      BufferedWriter bw = new BufferedWriter(new FileWriter(file));
+
+      for (Flight flight : flights) {
+        bw.write(flight.toString());
+        bw.write("\n");
+      }
+
+      bw.close();
+      return true;
+
+    } catch (Exception e) {
+      System.out.printf("Database file: '%s' not found! \n", file);
+
+      try {
+        BufferedWriter bw = new BufferedWriter(new FileWriter(file));
+
+        for (Flight flight : flights) {
+          bw.write(flight.toString());
+          bw.write("\n");
+        }
+
+        bw.close();
+        return true;
+
+      } catch (Exception e1) {
+        return false;
+      }
+    }
+
   }
 
   @Override

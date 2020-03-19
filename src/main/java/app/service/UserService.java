@@ -29,6 +29,7 @@ public class UserService {
       return Optional.empty();
     }
   }
+
   public boolean delete(int ID) {
     return userDao.delete(ID);
   }

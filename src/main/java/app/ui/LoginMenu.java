@@ -31,6 +31,7 @@ public class LoginMenu {
     System.out.println(sb.toString());
     FlightController flightController = new FlightController();
     BookingController bookingController = new BookingController();
+    bookingController.fillList();
     UserController userController = new UserController();
     userController.fillList();
     flightController.generateFlight();
@@ -145,7 +146,8 @@ public class LoginMenu {
 
             List<Booking> userBookings = bookingController.getAll()
                     .stream()
-                    .filter(booking -> booking.getUser().equals(user)).collect(Collectors.toList());
+                    .filter(booking -> booking.getUser().getID() == user.getID())
+                    .collect(Collectors.toList());
             userBookings.forEach(ub -> System.out.println(ub.represent()));
 
             System.out.print("Please choose booking you want to cancel by ID: ");
@@ -179,6 +181,8 @@ public class LoginMenu {
           System.out.print("Please confirm password:");
           String passwordLoginMF = scanner.nextLine();
 
+          System.out.println(bookingController.getAll());
+
           if (userController.getAll().stream()
                   .anyMatch(u -> u.getUsername().equals(usernameLoginMF) && u.getPassword().equals(passwordLoginMF))) {
 
@@ -189,10 +193,15 @@ public class LoginMenu {
                     .findFirst()
                     .get();
 
+            System.out.println(user.toString());
+
+            bookingController.getAll().forEach(booking -> System.out.println(booking));
+
             System.out.println("YOUR FLIGHTS:");
             List<Booking> userBookings = bookingController.getAll()
                     .stream()
-                    .filter(booking -> booking.getUser().equals(user)).collect(Collectors.toList());
+                    .filter(b -> b.getUser().getID() == user.getID())
+                    .collect(Collectors.toList());
             if (userBookings.size() == 0) System.out.println("You have not booked any flight yet");
               userBookings.forEach(ub -> System.out.println(ub.represent()));
 
@@ -207,6 +216,9 @@ public class LoginMenu {
 
         case "6":
           System.out.println("Dear user, thank you for choosing us :). We hope you will enjoy your travel.");
+          bookingController.save();
+          userController.save();
+          flightController.save();
           break;
 
         default:

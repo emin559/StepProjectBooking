@@ -4,7 +4,6 @@ import app.dao.FlightDao;
 import app.entities.Flight;
 import app.enums.Airport;
 import app.util.FlightGenerator;
-
 import java.io.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;

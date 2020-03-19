@@ -2,6 +2,7 @@ package app.entities;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class User {
   private int ID;
@@ -51,4 +52,5 @@ public class User {
   public String toString() {
     return String.format("%d %s %s", getID(), getUsername(), getPassword());
   }
+
 }

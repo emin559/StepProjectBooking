@@ -19,6 +19,6 @@ public class Person {
 
   @Override
   public String toString() {
-    return String.format("name='%s', surname='%s'}", name, surname);
+    return String.format("%s-%s", name, surname);
   }
 }

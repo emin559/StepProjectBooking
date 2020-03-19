@@ -47,7 +47,7 @@ public class BookingDao implements DAO<Booking> {
 
     try {
       new BufferedReader(new FileReader(file)).lines().collect(Collectors.toList());
-      BufferedWriter bw = new BufferedWriter(new FileWriter(file, true));
+      BufferedWriter bw = new BufferedWriter(new FileWriter(file));
 
       for (Booking booking : bookings) {
         bw.write(booking.toString());

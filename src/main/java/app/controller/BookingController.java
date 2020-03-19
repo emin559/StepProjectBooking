@@ -40,4 +40,8 @@ public class BookingController {
     public void addBooking(User user, Flight flight, List<Person> passengers) {
         bookingService.addBooking(user, flight, passengers);
     }
+
+    public void fillList() {
+        bookingService.fillList();
+    }
 }

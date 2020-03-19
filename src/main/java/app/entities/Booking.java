@@ -44,6 +44,6 @@ public class Booking {
 
   @Override
   public String toString() {
-    return String.format("Booking{ID=%d, user=%s, flight=%s, persons=%s}", ID, user, flight, persons);
+    return String.format("%d;%s;%s;%s;", ID, user, flight, persons.toString());
   }
 }
