@@ -7,7 +7,6 @@ import app.entities.Booking;
 import app.entities.Flight;
 import app.entities.Person;
 import app.entities.User;
-import app.util.FlightGenerator;
 
 import java.io.*;
 import java.util.ArrayList;

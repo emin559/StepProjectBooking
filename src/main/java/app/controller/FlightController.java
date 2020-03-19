@@ -1,11 +1,10 @@
 package app.controller;
 
 import app.entities.Flight;
-import app.enums.Airport;
+import app.database.Airport;
 import app.service.FlightService;
 
 import java.util.List;
-import java.util.Optional;
 
 public class FlightController {
     public FlightService flightService = new FlightService();

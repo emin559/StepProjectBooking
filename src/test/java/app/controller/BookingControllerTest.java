@@ -4,7 +4,7 @@ import app.entities.Booking;
 import app.entities.Flight;
 import app.entities.Person;
 import app.entities.User;
-import app.enums.Airport;
+import app.database.Airport;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

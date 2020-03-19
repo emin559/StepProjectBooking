@@ -4,10 +4,9 @@ import app.controller.BookingController;
 import app.controller.FlightController;
 import app.controller.UserController;
 import app.entities.Booking;
-import app.entities.Flight;
 import app.entities.Person;
 import app.entities.User;
-import app.enums.Airport;
+import app.database.Airport;
 
 import java.util.ArrayList;
 import java.util.List;

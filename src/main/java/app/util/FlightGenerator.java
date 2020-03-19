@@ -1,6 +1,6 @@
 package app.util;
 import app.entities.Flight;
-import app.enums.Airport;
+import app.database.Airport;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -9,14 +9,13 @@ import java.util.Random;
 
 public class FlightGenerator {
 
-
   public static ArrayList<Flight> generateFlight(int count) {
     ArrayList<Flight> generatedFlight = new ArrayList<>();
     Random rndm = new Random();
     ArrayList<Airport> randomDestinations = new ArrayList<>();
     EnumSet.allOf(Airport.class).forEach(air -> randomDestinations.add(air));
 
-    int seats = 5;
+    int seats = 50;
 
     for (int i = 0; i < count; i++) {
       int randomDestIndex = rndm.nextInt(randomDestinations.size() - 1);

@@ -1,9 +1,6 @@
 package app.dao;
 
 import app.entities.Booking;
-import app.entities.Flight;
-import app.util.FlightGenerator;
-
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +29,7 @@ public class BookingDao implements DAO<Booking> {
   @Override
   public boolean delete(int ID) {
     if (ID > bookings.size() || ID < 0) return false;
-    bookings.removeIf(booking -> ID == booking.getID()); //check seat
+    bookings.removeIf(booking -> ID == booking.getID());
     return true;
   }
 

@@ -1,4 +1,4 @@
-package app.enums;
+package app.database;
 
 public enum  Airport {
     BAKU("GYD"),

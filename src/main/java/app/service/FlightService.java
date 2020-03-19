@@ -2,15 +2,10 @@ package app.service;
 
 import app.dao.FlightDao;
 import app.entities.Flight;
-import app.enums.Airport;
+import app.database.Airport;
 import app.util.FlightGenerator;
 import java.io.*;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.time.Instant;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.stream.Collectors;

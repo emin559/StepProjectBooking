@@ -1,9 +1,6 @@
 package app.controller;
 
-import app.entities.Booking;
-import app.entities.Flight;
 import app.entities.User;
-import app.enums.Airport;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

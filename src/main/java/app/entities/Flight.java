@@ -1,13 +1,6 @@
 package app.entities;
 
-import app.enums.Airport;
-
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
+import app.database.Airport;
 
 public class Flight {
     private int ID;

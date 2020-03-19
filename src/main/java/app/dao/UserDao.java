@@ -1,9 +1,6 @@
 package app.dao;
 
-import app.entities.Flight;
 import app.entities.User;
-import app.util.FlightGenerator;
-
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
