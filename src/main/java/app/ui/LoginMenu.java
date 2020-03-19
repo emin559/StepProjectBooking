@@ -34,7 +34,6 @@ public class LoginMenu {
     bookingController.fillList();
     UserController userController = new UserController();
     userController.fillList();
-    flightController.generateFlight();
     flightController.fillList();
 
     Scanner scanner = new Scanner(System.in);
@@ -122,8 +121,7 @@ public class LoginMenu {
             }
 
           } catch (Exception e) {
-            System.out.println("Please enter valid input!!!");
-            System.out.println(bookingController.getAll());
+            System.out.println("You entered invalid input. Please press enter to go back to main menu");
             command2 = scanner.nextLine();
           }
           break;
@@ -164,7 +162,7 @@ public class LoginMenu {
               command2 = scanner.nextLine();
 
             } catch (Exception e) {
-              System.out.println("Please enter valid input!!!");
+              System.out.println("You entered invalid input. Please press enter to go back to main menu");
               command2 = scanner.nextLine();
             }
 
@@ -222,7 +220,7 @@ public class LoginMenu {
           break;
 
         default:
-          System.out.println("Please enter valid input!");
+          System.out.println("You entered invalid input. Please press enter to go back to main menu");
           command2  = scanner.nextLine();
       }
     }

@@ -15,10 +15,6 @@ public class UserDao implements DAO<User> {
 
 
   @Override
-  public void create() {
-  }
-
-  @Override
   public List<User> getAll() {
     return users;
   }
@@ -57,7 +53,6 @@ public class UserDao implements DAO<User> {
       return true;
 
     } catch (Exception e) {
-      System.out.printf("Database file: '%s' not found. It will be created in few seconds. \n", file);
 
       try {
         BufferedWriter bw = new BufferedWriter(new FileWriter(file));
@@ -76,9 +71,5 @@ public class UserDao implements DAO<User> {
     }
   }
 
-  @Override
-  public boolean update(User entity) {
-    return false;
-  }
 }
 

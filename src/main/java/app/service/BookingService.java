@@ -20,10 +20,6 @@ public class BookingService {
   FlightDao flightDao;
   UserDao userDao;
 
-
-  public void create() {
-  }
-
   public List<Booking> getAll() {
     return bookingDao.getAll();
   }
@@ -50,10 +46,6 @@ public class BookingService {
 
   public boolean save() {
     return bookingDao.save();
-  }
-
-  public boolean update(Booking entity) {
-    return bookingDao.update(entity);
   }
 
   public void fillList() {
@@ -86,10 +78,9 @@ public class BookingService {
       bookingDao.getAll().addAll(bookingtList);
 
     } catch (Exception e) {
-      System.out.printf(" Database file: '%s' not found! \n", file);
+      System.out.printf(" Booking database is going to be created... \n", file);
     }
 
   }
-
 
 }

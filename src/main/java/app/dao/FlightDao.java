@@ -15,10 +15,6 @@ import java.util.stream.Collectors;
 public class FlightDao implements DAO<Flight> {
   public List<Flight> flights = new ArrayList<>();
 
-  @Override
-  public void create() {
-
-  }
 
   @Override
   public List<Flight> getAll() {
@@ -77,11 +73,6 @@ public class FlightDao implements DAO<Flight> {
       }
     }
 
-  }
-
-  @Override
-  public boolean update(Flight entity) {
-    return false;
   }
 
 }

@@ -19,7 +19,10 @@ public class EntranceMenu {
     sb.append("5. Exit\n");
     sb.append("=================================\n");
 
+
     UserController userController = new UserController();
+    FlightController flightController = new FlightController();
+    flightController.generateFlight();
     userController.fillList();
 
     Scanner scanner = new Scanner(System.in);
@@ -43,7 +46,7 @@ public class EntranceMenu {
             command = "5";
             break;
           } else {
-            System.out.println("Please input correct username and password");
+            System.out.println("Username or password is incorrect. Please press enter to go back to main menu and try again.");
             command = scanner.nextLine();
           }
           break;
@@ -54,7 +57,7 @@ public class EntranceMenu {
           System.out.print("Please enter password:");
           String password = scanner.nextLine();
           userController.register(username, password);
-          System.out.println("Please press enter to go back main menu:");
+          System.out.println("You successfully registered. Please press enter to go back main menu:");
           command = scanner.nextLine();
           break;
 
@@ -64,7 +67,7 @@ public class EntranceMenu {
           break;
 
         case "4":
-          System.out.println("Unfortunately we can't help you ;'(");
+          System.out.println("Unfortunately we can't help you ;'( \n Please press enter to go back to main menu");
           command = scanner.nextLine();
           break;
 

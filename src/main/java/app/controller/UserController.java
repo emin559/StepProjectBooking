@@ -9,9 +9,6 @@ import java.util.Optional;
 public class UserController {
     UserService userService= new UserService();
 
-    public void create() {
-        userService.create();
-    }
 
     public List<User> getAll() {
         return userService.getAll();
@@ -27,10 +24,6 @@ public class UserController {
 
     public boolean save() {
         return userService.save();
-    }
-
-    public boolean update(User entity) {
-        return userService.update(entity);
     }
 
     public void register(String username, String pass) {

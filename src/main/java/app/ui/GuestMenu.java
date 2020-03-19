@@ -8,7 +8,7 @@ public class GuestMenu {
     public static void addMainMenu() {
         StringBuilder sb = new StringBuilder();
         sb.append("=================================\n");
-        sb.append("flight booking service\n".toUpperCase());
+        sb.append("flight booking service\nYou entered as guest. Please register to have full access. \n".toUpperCase());
         sb.append("=================================\n");
         sb.append("1. Online board\n");
         sb.append("2. Show the flight info\n");
@@ -20,7 +20,6 @@ public class GuestMenu {
 
         System.out.println(sb.toString());
         FlightController flightController = new FlightController();
-        flightController.generateFlight();
         flightController.fillList();
 
         Scanner scanner = new Scanner(System.in);
@@ -32,6 +31,7 @@ public class GuestMenu {
             switch (command1) {
                 case "1":
                     System.out.println(flightController.getFollowingFlights());
+                    System.out.println("Please press enter to go back to main menu.");
                     command1 = scanner.nextLine();
                     break;
                 case "2":
@@ -39,9 +39,10 @@ public class GuestMenu {
                     try{
                         int flightID = Integer.parseInt(scanner.nextLine());
                         System.out.println(flightController.getByID(flightID).represent());
+                        System.out.println("Please press enter to go back to main menu.");
                         command1 = scanner.nextLine();
                     } catch(Exception e){
-                        System.out.println("Please enter valid input!!!");
+                        System.out.println("You entered invalid command. Please press enter to go back to main menu");
                         command1 = scanner.nextLine();
                 }
                     break;

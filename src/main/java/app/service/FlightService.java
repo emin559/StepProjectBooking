@@ -18,9 +18,6 @@ import java.util.stream.Collectors;
 public class FlightService {
   FlightDao flightDao = new FlightDao();
 
-  public void create() {
-    flightDao.create();
-  }
 
   public List<Flight> getAll() {
     return flightDao.getAll();
@@ -40,10 +37,6 @@ public class FlightService {
 
   public boolean save() {
     return flightDao.save();
-  }
-
-  public boolean update(Flight entity) {
-    return flightDao.update(entity);
   }
 
   public void generateFlight() {

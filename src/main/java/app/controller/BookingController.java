@@ -12,10 +12,6 @@ import java.util.Optional;
 public class BookingController {
     BookingService bookingService =new BookingService();
 
-    public void create() {
-        bookingService.create();
-    }
-
     public List<Booking> getAll() {
         return bookingService.getAll();
     }
@@ -31,11 +27,6 @@ public class BookingController {
     public boolean save() {
         return bookingService.save();
     }
-
-    public boolean update(Booking entity) {
-        return bookingService.update(entity);
-    }
-
 
     public void addBooking(User user, Flight flight, List<Person> passengers) {
         bookingService.addBooking(user, flight, passengers);

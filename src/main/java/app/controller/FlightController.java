@@ -10,10 +10,6 @@ import java.util.Optional;
 public class FlightController {
     public FlightService flightService = new FlightService();
 
-    public void create() {
-        flightService.create();
-    }
-
     public List<Flight> getAll() {
         return flightService.getAll();
     }
@@ -29,11 +25,6 @@ public class FlightController {
     public boolean save() {
         return flightService.save();
     }
-
-    public boolean update(Flight entity) {
-        return flightService.update(entity);
-    }
-
 
     public void generateFlight() {
         flightService.generateFlight();

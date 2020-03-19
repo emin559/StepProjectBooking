@@ -15,11 +15,6 @@ public class BookingDao implements DAO<Booking> {
 
 
   @Override
-  public void create() {
-
-  }
-
-  @Override
   public List<Booking> getAll() {
     return bookings;
   }
@@ -58,7 +53,6 @@ public class BookingDao implements DAO<Booking> {
       return true;
 
     } catch (Exception e) {
-      System.out.printf("Database file: '%s' not found! \n", file);
 
       try {
         BufferedWriter bw = new BufferedWriter(new FileWriter(file));
@@ -76,10 +70,5 @@ public class BookingDao implements DAO<Booking> {
       }
     }
 
-  }
-
-  @Override
-  public boolean update(Booking entity) {
-    return false;
   }
 }

@@ -14,9 +14,6 @@ import java.util.stream.Collectors;
 public class UserService {
   UserDao userDao = new UserDao();
 
-  public void create() {
-    userDao.create();
-  }
 
   public List<User> getAll() {
     return userDao.getAll();
@@ -38,31 +35,8 @@ public class UserService {
     return userDao.save();
   }
 
-  public boolean update(User entity) {
-    return userDao.update(entity);
-  }
-
   public void register(String username, String pass) {
-    File file = new File("src/main/java/app/database/user.txt");
-
-    try {
-      List<String> collect = new BufferedReader(new FileReader(file)).lines().collect(Collectors.toList());
-      userDao.users.add(new User(collect.size()+1, username, pass));
-
-    } catch (Exception e) {
-      System.out.printf(" %s File not found! \n", file);
-
-      try {
-        BufferedWriter bw = new BufferedWriter(new FileWriter(file));
-        userDao.users.add(new User(1, username, pass));
-
-        bw.close();
-
-      } catch (Exception e2) {
-        System.out.println("Something went wrong!");
-      }
-
-    }
+    userDao.users.add(new User(userDao.getAll().size()+1, username, pass));
   }
 
   public void fillList() {
@@ -80,7 +54,7 @@ public class UserService {
       userDao.users.addAll(userList);
 
     } catch (Exception e) {
-      System.out.printf("Database file: '%s' not found! \n", file);
+      System.out.printf("Database files are going to be created \n", file);
     }
 
   }
