@@ -13,12 +13,12 @@ public class FlightController {
         return flightService.getAll();
     }
 
-    public Flight getByID(int ID) {
-        return flightService.getByID(ID).get();
+    public Flight getById(int id) {
+        return flightService.getById(id).get();
     }
 
-    public boolean delete(int ID) {
-        return flightService.delete(ID);
+    public boolean delete(int id) {
+        return flightService.delete(id);
     }
 
     public boolean save() {

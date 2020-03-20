@@ -18,9 +18,9 @@ public class FlightDao implements DAO<Flight> {
   }
 
   @Override
-  public Optional<Flight> getByID(int ID) {
+  public Optional<Flight> getById(int id) {
     try{
-      return flights.stream().filter(flight -> ID == flight.getID()).findFirst();
+      return flights.stream().filter(flight -> id == flight.getId()).findFirst();
     }
     catch(Exception e) {
       return Optional.empty();
@@ -28,9 +28,9 @@ public class FlightDao implements DAO<Flight> {
   }
 
   @Override
-  public boolean delete(int ID) {
-    if (ID > flights.size() || ID < 0) return false;
-    flights.removeIf(flight -> ID == flight.getID());
+  public boolean delete(int id) {
+    if (id > flights.size() || id < 0) return false;
+    flights.removeIf(flight -> id == flight.getId());
     return true;
   }
 

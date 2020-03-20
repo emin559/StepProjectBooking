@@ -13,12 +13,12 @@ public class UserController {
         return userService.getAll();
     }
 
-    public User getByID(int ID) {
-        return userService.getByID(ID).get();
+    public User getById(int id) {
+        return userService.getById(id).get();
     }
 
-    public boolean delete(int ID) {
-        return userService.delete(ID);
+    public boolean delete(int id) {
+        return userService.delete(id);
     }
 
     public boolean save() {

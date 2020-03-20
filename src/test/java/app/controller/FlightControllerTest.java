@@ -34,7 +34,7 @@ class FlightControllerTest {
   @Test
   void getByID() {
     Flight expected = flightController.getAll().get(0);
-    Flight actual = flightController.getByID(1);
+    Flight actual = flightController.getById(1);
 
     assertEquals(expected, actual);
 
