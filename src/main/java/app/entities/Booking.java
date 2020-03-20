@@ -6,7 +6,7 @@ public class Booking {
   private int ID;
   private User user;
   private Flight flight;
-  private List<Person> persons;
+  private List<Person> passengers;
 
   public Booking(int ID, User user, Flight flight) {
     this.ID = ID;
@@ -18,7 +18,7 @@ public class Booking {
     this.ID = ID;
     this.user = user;
     this.flight = flight;
-    this.persons = passengers;
+    this.passengers = passengers;
   }
 
   public int getID() {
@@ -33,17 +33,17 @@ public class Booking {
     return flight;
   }
 
-  public List<Person> getPersons() {
-    return persons;
+  public List<Person> getPassengers() {
+    return passengers;
   }
 
   public String represent() {
     return String.format("BOOKING ID: %d USER: '%s' FLIGHT: '%s' PASSENGERS: '%s' \n", ID,
-            user.represent(), flight.represent(), persons.toString());
+            user.represent(), flight.represent(), passengers.toString());
   }
 
   @Override
   public String toString() {
-    return String.format("%d;%s;%s;%s;", ID, user, flight, persons.toString());
+    return String.format("%d;%s;%s;%s;", ID, user, flight, passengers.toString());
   }
 }

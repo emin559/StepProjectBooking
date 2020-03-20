@@ -26,6 +26,7 @@ public class LoginMenu {
     sb.append("5. My flights\n");
     sb.append("6. Exit\n");
     sb.append("=================================\n");
+    sb.append("Warning: Please exit with command (6) when you want to leave app in order to  save your data in database!\n");
 
     System.out.println(sb.toString());
     FlightController flightController = new FlightController();
@@ -37,6 +38,7 @@ public class LoginMenu {
 
     Scanner scanner = new Scanner(System.in);
     String command2 = "";
+
     while (!command2.equals("6")) {
       System.out.println(sb.toString());
       System.out.print("Please enter your command by index: ");
@@ -116,7 +118,8 @@ public class LoginMenu {
             } else if (command2.toLowerCase().equals("no")) {
               LoginMenu.addMainMenu();
             } else {
-
+              System.out.println("You entered invalid input. Please press enter to go back to main menu");
+              command2 = scanner.nextLine();
             }
 
           } catch (Exception e) {
@@ -154,7 +157,7 @@ public class LoginMenu {
               int flightID = bookingController.getByID(bookingID).getFlight().getID();
 
               flightController.getByID(flightID).setReservedSeats(flightController.getByID(flightID).getReservedSeats() -
-                      bookingController.getByID(bookingID).getPersons().size());
+                      bookingController.getByID(bookingID).getPassengers().size());
               bookingController.delete(bookingID);
 
               System.out.println("Book cancelled successfully. Please press enter to go back to main menu");
@@ -190,9 +193,6 @@ public class LoginMenu {
                     .findFirst()
                     .get();
 
-            System.out.println(user.toString());
-
-            bookingController.getAll().forEach(booking -> System.out.println(booking));
 
             System.out.println("YOUR FLIGHTS:");
             List<Booking> userBookings = bookingController.getAll()
@@ -200,7 +200,7 @@ public class LoginMenu {
                     .filter(b -> b.getUser().getID() == user.getID())
                     .collect(Collectors.toList());
             if (userBookings.size() == 0) System.out.println("You have not booked any flight yet");
-              userBookings.forEach(ub -> System.out.println(ub.represent()));
+            userBookings.forEach(ub -> System.out.println(ub.represent()));
 
             System.out.println("Please press enter to back to main menu");
             command2 = scanner.nextLine();
@@ -220,7 +220,8 @@ public class LoginMenu {
 
         default:
           System.out.println("You entered invalid input. Please press enter to go back to main menu");
-          command2  = scanner.nextLine();
+          command2 = scanner.nextLine();
+          break;
       }
     }
   }

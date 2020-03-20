@@ -49,8 +49,4 @@ class FlightControllerTest {
 
   }
 
-
-  @Test
-  void getFollowingFlights() {
-  }
 }

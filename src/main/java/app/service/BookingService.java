@@ -16,8 +16,6 @@ import java.util.stream.Collectors;
 
 public class BookingService {
   BookingDao bookingDao = new BookingDao();
-  FlightDao flightDao;
-  UserDao userDao;
 
   public List<Booking> getAll() {
     return bookingDao.getAll();
@@ -38,7 +36,7 @@ public class BookingService {
   public void addBooking(User user, Flight flight, List<Person> passengers) {
     Booking booking = new Booking(bookingDao.bookings.size() + 1,
             user,
-            flight, passengers); //check ID, userID, passengers
+            flight, passengers);
     bookingDao.bookings.add(booking);
 
   }
@@ -64,10 +62,10 @@ public class BookingService {
                 flightSplit[2], Integer.parseInt(flightSplit[3]), Integer.parseInt(flightSplit[4]));
 
         List<Person> passengers = new ArrayList<>();
-        for (int i = 0; i < personSplit.length; i++) {
-          String[] p1 = personSplit[i].split("-");
-          String name = p1[0].replaceAll("\\[", "").replaceAll("\\]","");
-          String surname = p1[1].replaceAll("\\[", "").replaceAll("\\]","");
+        for (String s : personSplit) {
+          String[] p1 = s.split("-");
+          String name = p1[0].replaceAll("\\[", "").replaceAll("]", "");
+          String surname = p1[1].replaceAll("\\[", "").replaceAll("]", "");
 
           passengers.add(new Person(name, surname));
         }

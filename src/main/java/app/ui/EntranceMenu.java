@@ -19,7 +19,6 @@ public class EntranceMenu {
     sb.append("5. Exit\n");
     sb.append("=================================\n");
 
-
     UserController userController = new UserController();
     FlightController flightController = new FlightController();
     flightController.generateFlight();
@@ -31,6 +30,7 @@ public class EntranceMenu {
       System.out.println(sb.toString());
       System.out.print("Please enter your command by index: ");
       command = scanner.nextLine();
+
       switch (command) {
         case "1":
           System.out.print("Please enter username:");
@@ -77,9 +77,9 @@ public class EntranceMenu {
           break;
 
         default:
-          System.out.println("Invalid command. Please try again!");
+          System.out.println("You entered invalid input. Please press enter to go back to main menu");
+          command = scanner.nextLine();
           break;
-
       }
     }
   }
