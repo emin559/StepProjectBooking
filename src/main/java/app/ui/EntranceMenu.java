@@ -57,7 +57,7 @@ public class EntranceMenu {
           System.out.print("Please enter password:");
           String password = scanner.nextLine();
           userController.register(username, password);
-
+          userController.save();
           System.out.println("You successfully registered. Please press enter to go back main menu:");
           command = scanner.nextLine();
           break;
