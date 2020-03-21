@@ -17,9 +17,9 @@ public class UserDao implements DAO<User> {
   }
 
   @Override
-  public Optional<User> getByID(int ID) {
+  public Optional<User> getById(int id) {
     try{
-      return users.stream().filter(user -> ID == user.getID()).findFirst();
+      return users.stream().filter(user -> id == user.getId()).findFirst();
     }
     catch(Exception e) {
       return Optional.empty();
@@ -27,9 +27,9 @@ public class UserDao implements DAO<User> {
   }
 
   @Override
-  public boolean delete(int ID) {
-    if (ID > users.size() || ID < 0) return false;
-    users.removeIf(user -> ID == user.getID());
+  public boolean delete(int id) {
+    if (id > users.size() || id < 0) return false;
+    users.removeIf(user -> id == user.getId());
     return true;
   }
 

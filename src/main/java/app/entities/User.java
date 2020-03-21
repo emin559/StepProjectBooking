@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class User {
-  private int ID;
+  private int id;
   private String username;
   private String password;
   private List<Booking> bookings = new ArrayList<>();
@@ -14,21 +14,21 @@ public class User {
     this.password = password;
   }
 
-  public User(int ID, String username, String password) {
-    this.ID = ID;
+  public User(int id, String username, String password) {
+    this.id = id;
     this.username = username;
     this.password = password;
   }
 
-  public User(int ID, String username, String password, List<Booking> bookings) {
-    this.ID = ID;
+  public User(int id, String username, String password, List<Booking> bookings) {
+    this.id = id;
     this.username = username;
     this.password = password;
     this.bookings = bookings;
   }
 
-  public int getID() {
-    return ID;
+  public int getId() {
+    return id;
   }
 
   public String getUsername() {
@@ -49,7 +49,7 @@ public class User {
 
   @Override
   public String toString() {
-    return String.format("%d %s %s", getID(), getUsername(), getPassword());
+    return String.format("%d %s %s", getId(), getUsername(), getPassword());
   }
 
 }

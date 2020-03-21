@@ -6,9 +6,9 @@ import java.util.Optional;
 public interface DAO<T> {
   List<T> getAll();
 
-  Optional<T> getByID(int ID);
+  Optional<T> getById(int id);
 
-  boolean delete(int ID);
+  boolean delete(int id);
 
   boolean save();
 }

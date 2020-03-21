@@ -34,7 +34,7 @@ class UserControllerTest {
   @Test
   void getByID() {
     User expected = userController.getAll().get(0);
-    User actual = userController.getByID(1);
+    User actual = userController.getById(1);
 
     assertEquals(expected, actual);
 

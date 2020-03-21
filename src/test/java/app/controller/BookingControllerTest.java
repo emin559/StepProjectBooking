@@ -53,7 +53,7 @@ class BookingControllerTest {
   @Test
   void getByID() {
     Booking expected = bookingController.getAll().get(0);
-    Booking actual = bookingController.getByID(1);
+    Booking actual = bookingController.getById(1);
 
     assertEquals(expected, actual);
   }

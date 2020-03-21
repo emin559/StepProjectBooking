@@ -18,16 +18,16 @@ public class FlightService {
     return flightDao.getAll();
   }
 
-  public Optional<Flight> getByID(int ID) {
-     if (flightDao.getByID(ID).isPresent()) {
-       return flightDao.getByID(ID);
+  public Optional<Flight> getById(int id) {
+     if (flightDao.getById(id).isPresent()) {
+       return flightDao.getById(id);
      } else {
        return Optional.empty();
      }
   }
 
-  public boolean delete(int ID) {
-    return flightDao.delete(ID);
+  public boolean delete(int id) {
+    return flightDao.delete(id);
   }
 
   public boolean save() {

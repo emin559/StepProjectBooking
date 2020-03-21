@@ -15,12 +15,12 @@ public class BookingController {
         return bookingService.getAll();
     }
 
-    public Booking getByID(int ID) {
-        return bookingService.getByID(ID).get();
+    public Booking getById(int id) {
+        return bookingService.getById(id).get();
     }
 
-    public boolean delete(int ID) {
-        return bookingService.delete(ID);
+    public boolean delete(int id) {
+        return bookingService.delete(id);
     }
 
     public boolean save() {

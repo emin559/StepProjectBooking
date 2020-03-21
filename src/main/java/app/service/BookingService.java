@@ -21,16 +21,16 @@ public class BookingService {
     return bookingDao.getAll();
   }
 
-  public Optional<Booking> getByID(int ID) {
-    if (bookingDao.getByID(ID).isPresent()) {
-      return bookingDao.getByID(ID);
+  public Optional<Booking> getById(int id) {
+    if (bookingDao.getById(id).isPresent()) {
+      return bookingDao.getById(id);
     } else {
       return Optional.empty();
     }
   }
 
-  public boolean delete(int ID) {
-    return bookingDao.delete(ID);
+  public boolean delete(int id) {
+    return bookingDao.delete(id);
   }
 
   public void addBooking(User user, Flight flight, List<Person> passengers) {

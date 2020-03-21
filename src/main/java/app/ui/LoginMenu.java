@@ -51,8 +51,8 @@ public class LoginMenu {
         case "2":
           System.out.print("Please enter the flight ID: ");
           try {
-            int flightID = Integer.parseInt(scanner.nextLine());
-            System.out.println(flightController.getByID(flightID).represent());
+            int flightId = Integer.parseInt(scanner.nextLine());
+            System.out.println(flightController.getById(flightId).represent());
             command2 = scanner.nextLine();
           } catch (Exception e) {
             System.out.println("Please enter valid input!!!");
@@ -90,7 +90,7 @@ public class LoginMenu {
                         .get();
                 System.out.println("Please enter your FLIGHT ID");
                 try {
-                  int flightID = Integer.parseInt(scanner.nextLine());
+                  int flightId = Integer.parseInt(scanner.nextLine());
                   for (int i = 0; i < tickets; i++) {
                     System.out.println("Enter passenger name:");
                     String pName = scanner.nextLine();
@@ -98,11 +98,11 @@ public class LoginMenu {
                     String pSurname = scanner.nextLine();
                     passengers.add(new Person(pName, pSurname));
                   }
-                  bookingController.addBooking(user, flightController.getByID(flightID), passengers);
+                  bookingController.addBooking(user, flightController.getById(flightId), passengers);
 
-                  user.getBookings().add(new Booking(1, user, flightController.getByID(flightID), passengers));
+                  user.getBookings().add(new Booking(1, user, flightController.getById(flightId), passengers));
 
-                  flightController.getByID(flightID).setReservedSeats(flightController.getByID(flightID).getReservedSeats() + tickets);
+                  flightController.getById(flightId).setReservedSeats(flightController.getById(flightId).getReservedSeats() + tickets);
                   System.out.println("Your flight has been successfully booked! Please press enter to go back to main menu.");
                   command2 = scanner.nextLine();
 
@@ -146,7 +146,7 @@ public class LoginMenu {
 
             List<Booking> userBookings = bookingController.getAll()
                     .stream()
-                    .filter(booking -> booking.getUser().getID() == user.getID())
+                    .filter(booking -> booking.getUser().getId() == user.getId())
                     .collect(Collectors.toList());
             userBookings.forEach(ub -> System.out.println(ub.represent()));
 
@@ -154,10 +154,10 @@ public class LoginMenu {
 
             try {
               int bookingID = Integer.parseInt(scanner.nextLine());
-              int flightID = bookingController.getByID(bookingID).getFlight().getID();
+              int flightID = bookingController.getById(bookingID).getFlight().getId();
 
-              flightController.getByID(flightID).setReservedSeats(flightController.getByID(flightID).getReservedSeats() -
-                      bookingController.getByID(bookingID).getPassengers().size());
+              flightController.getById(flightID).setReservedSeats(flightController.getById(flightID).getReservedSeats() -
+                      bookingController.getById(bookingID).getPassengers().size());
               bookingController.delete(bookingID);
 
               System.out.println("Book cancelled successfully. Please press enter to go back to main menu");
@@ -197,7 +197,7 @@ public class LoginMenu {
             System.out.println("YOUR FLIGHTS:");
             List<Booking> userBookings = bookingController.getAll()
                     .stream()
-                    .filter(b -> b.getUser().getID() == user.getID())
+                    .filter(b -> b.getUser().getId() == user.getId())
                     .collect(Collectors.toList());
             if (userBookings.size() == 0) System.out.println("You have not booked any flight yet");
             userBookings.forEach(ub -> System.out.println(ub.represent()));

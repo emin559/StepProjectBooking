@@ -17,16 +17,16 @@ public class UserService {
     return userDao.getAll();
   }
 
-  public Optional<User> getByID(int ID) {
-    if (userDao.getByID(ID).isPresent()) {
-      return userDao.getByID(ID);
+  public Optional<User> getById(int id) {
+    if (userDao.getById(id).isPresent()) {
+      return userDao.getById(id);
     } else {
       return Optional.empty();
     }
   }
 
-  public boolean delete(int ID) {
-    return userDao.delete(ID);
+  public boolean delete(int id) {
+    return userDao.delete(id);
   }
 
   public boolean save() {
@@ -52,7 +52,7 @@ public class UserService {
       userDao.users.addAll(userList);
 
     } catch (Exception e) {
-      System.out.printf("Database files are going to be created \n", file);
+      System.out.printf("Database files are going to be created %s\n", file);
     }
 
   }
